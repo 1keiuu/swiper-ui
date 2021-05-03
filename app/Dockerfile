@@ -1,5 +1,5 @@
-FROM node:15-alpine
-RUN npm install -g webpack-cli
+FROM node:14-alpine
+RUN npm install -g webpack-cli webpack
 
 WORKDIR /usr/src/app
 COPY . .

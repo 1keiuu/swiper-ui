@@ -12,3 +12,5 @@ services:
     tty: true
     volumes:
       - ./api:/go/src/api
+    ports:
+      - 8888:8888
