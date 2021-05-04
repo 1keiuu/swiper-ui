@@ -1,0 +1,10 @@
+.user-cards__list {
+  height: 600px;
+  min-width: 375px;
+  border-radius: 25px;
+  box-shadow: 3px 3px 26px -6px rgba(0, 0, 0, 0.2);
+  overflow: scroll;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}

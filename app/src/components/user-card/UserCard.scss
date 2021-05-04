@@ -1,0 +1,11 @@
+.user-card {
+  background: white;
+  border-radius: 8px;
+  .user-card__img {
+    object-fit: cover;
+  }
+
+  .user-card__info {
+    display: flex;
+  }
+}

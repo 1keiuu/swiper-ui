@@ -1,9 +1,7 @@
-.item {
+.container {
+  min-width: 100vw;
+  min-height: 100vh;
   display: flex;
-  .user__img {
-    object-fit: cover;
-  }
-  p {
-    color: aqua;
-  }
+  justify-content: center;
+  align-items: center;
 }
