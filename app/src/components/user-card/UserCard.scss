@@ -2,13 +2,32 @@
   background: white;
   border-radius: 8px;
   display: none;
+  height: fit-content;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 20%);
   .user-card__img {
     object-fit: cover;
   }
   .user-card__info {
     display: flex;
+    padding-left: 10px;
+    .name-text {
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    .age-text {
+      font-weight: bold;
+    }
   }
   &.--active {
+    display: block;
+  }
+  &.--first {
+    display: block;
+  }
+  &.--second {
+    display: block;
+  }
+  &.--third {
     display: block;
   }
 }
