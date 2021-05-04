@@ -1,0 +1,9 @@
+.item {
+  display: flex;
+  .user__img {
+    object-fit: cover;
+  }
+  p {
+    color: aqua;
+  }
+}
