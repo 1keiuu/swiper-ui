@@ -1,27 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { render } from 'react-dom'
 import axios from "axios"
-class App extends React.Component {
-  constructor(props) { 
-    super(props)
-    this.state = { message: 'something' }
-    axios.get('http://localhost:8888').then(res=>{
-      console.log(res)
-    })
-  }
 
-  onChange(e) {
-     this.setState( {message: e.target.value} )
-  }
-
-  render() {
-    return (
-      <div>
-        <input type="text" onChange = { this.onChange.bind(this) } />
-        <p>{ this.state.message }</p>
-      </div>
-    )
-  }
+const App = () => {
+  const [currentUser, serCuurentUser] = useState([]) 
+  useEffect(async() => {
+     const res = await axios.get('http://localhost:8888')
+    serCuurentUser([...res.data])
+    console.log(currentUser)
+  },[])
+  return (
+    <div>
+<ul>
+      {currentUser.map(user => (
+        <li key={user.id}>
+          <a href={user.imageURL}>{user.name}</a>
+        </li>
+      ))}
+    </ul>  </div>
+  )
 }
 
 render(<App/>, document.getElementById('app'))
