@@ -1,11 +1,14 @@
 .user-card {
   background: white;
   border-radius: 8px;
+  display: none;
   .user-card__img {
     object-fit: cover;
   }
-
   .user-card__info {
     display: flex;
+  }
+  &.--active {
+    display: block;
   }
 }

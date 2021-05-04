@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./UserCard.scss"
 const UserCard = (props) => {
     const user = props.user
-  return (
-        <div key={user.id} className="user-card">
+    const isActive = props.isActive
+    return (
+        <div key={user.id} className={["user-card", isActive ? '--active':''].join(' ')}>
           <img
             src={user.imageURL}
             width={260}
