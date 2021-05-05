@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./Button.scss";
-import { currentCardStore } from "../../store/currentCard";
+import { CurrentCardStore } from "../../store/CurrentCard";
 
 type ButtonProps = {
   status: string;
@@ -12,7 +12,7 @@ const handleClick = (status: string, dispatch: ({ type: string }) => {}) => {
 };
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { state, dispatch } = useContext(currentCardStore);
+  const { state, dispatch } = useContext(CurrentCardStore);
   switch (props.status) {
     case "like":
       return (

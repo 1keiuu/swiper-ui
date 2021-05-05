@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"time"
 )
 
 type User struct {
@@ -29,6 +30,7 @@ func handler(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Access-Control-Allow-Origin", "*")
 	res.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 	output, _ := json.MarshalIndent(&users, "", "\t\t")
+	time.Sleep(time.Second * 2)
 	res.Write(output)
 }
 
