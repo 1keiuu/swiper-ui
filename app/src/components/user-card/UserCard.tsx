@@ -16,10 +16,10 @@ const UserCard: React.FC<UserCardProps> = (props) => {
 
   const generateActiveClassText = (text: string): string => {
     if (currentCardIndex == index) activeClassText = text += "--active --first";
-    else if (currentCardIndex + 1 == index)
-      activeClassText = text += "--active --second";
-    else if (currentCardIndex + 2 == index)
-      activeClassText = text += "--active --third";
+    // else if (currentCardIndex + 1 == index)
+    //   activeClassText = text += "--active --second";
+    // else if (currentCardIndex + 2 == index)
+    //   activeClassText = text += "--active --third";
     return text;
   };
 
@@ -32,8 +32,8 @@ const UserCard: React.FC<UserCardProps> = (props) => {
     >
       <img
         src={user.imageURL}
-        width={260}
-        height={260}
+        width={330}
+        height={330}
         className="user-card__img"
       />
       <div className="user-card__info">

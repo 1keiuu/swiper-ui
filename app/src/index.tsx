@@ -3,6 +3,8 @@ import { render } from "react-dom";
 import axios from "axios";
 import "./index.scss";
 import UserCardsList from "./components/user-cards-list/UserCardsList";
+import ButtonGroup from "./components/button-group/ButtonGroup";
+import MediaQuery from "react-responsive";
 
 const App = () => {
   const [userLists, serUserLists] = useState([]);
@@ -16,7 +18,10 @@ const App = () => {
 
   return (
     <div className="container">
-      <UserCardsList userLists={userLists} />
+      <div className="inner">
+        <UserCardsList userLists={userLists} />
+        <ButtonGroup />
+      </div>
     </div>
   );
 };

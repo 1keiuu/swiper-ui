@@ -1,7 +1,14 @@
+body {
+  margin: 0;
+}
 .container {
-  min-width: 100vw;
   min-height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  .inner {
+    max-width: 375px;
+    width: 100%;
+  }
 }

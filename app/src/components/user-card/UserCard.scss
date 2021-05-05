@@ -1,3 +1,5 @@
+$topPadding: 50px;
+
 .user-card {
   background: white;
   border-radius: 8px;
@@ -6,6 +8,8 @@
   box-shadow: 0 1px 5px rgb(0 0 0 / 20%);
   .user-card__img {
     object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
   .user-card__info {
     display: flex;
@@ -20,14 +24,18 @@
   }
   &.--active {
     display: block;
+    position: absolute;
   }
   &.--first {
-    display: block;
+    // top: $topPadding;
+    z-index: 5;
   }
   &.--second {
-    display: block;
+    // top: $topPadding + 8px;
+    z-index: 4;
   }
   &.--third {
-    display: block;
+    // top: $topPadding + 16px;
+    z-index: 3;
   }
 }
