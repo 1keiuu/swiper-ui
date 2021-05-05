@@ -5,15 +5,17 @@ import fetch from "../../lib/fetch";
 import { UserStore } from "../../store/User";
 
 const ReloadUserCards: React.FC = () => {
-  const { userState, dispatch } = useContext(UserStore);
-  // const { state } = useContext(CurrentCardStore);
+  const { state, dispatch } = useContext(UserStore);
+  const [status, setStatus] = useState("reloading");
 
   useEffect(() => {
     fetch((res) => {
+      if (res.length == 0) setStatus("empty");
       dispatch({ type: "APPEND_USERS", incomingUsers: res });
     });
   }, []);
-  return <div>empty</div>;
+  if (status == "reloading") return <div>取得中...</div>;
+  else if (status == "empty") return <div>empty</div>;
 };
 
 export default ReloadUserCards;

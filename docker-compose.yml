@@ -4,13 +4,13 @@ services:
     build: ./app
     tty: true
     volumes:
-      - ./app:/usr/src/app
+      - ./app:/usr/src/app:cached
     ports:
       - 3000:3000
   api:
     build: ./api
     tty: true
     volumes:
-      - ./api:/go/src/api
+      - ./api:/go/src/api:cached
     ports:
       - 8888:8888
