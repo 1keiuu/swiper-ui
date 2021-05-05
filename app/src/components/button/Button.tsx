@@ -1,16 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Button.scss";
+import { store } from "../../store";
 
 type ButtonProps = {
-  iconName: string;
+  type: string;
+};
+
+const handleClick = (type: string, dispatch: ({ type: string }) => {}) => {
+  dispatch({ type: "INCREMENT" });
 };
 
 const Button: React.FC<ButtonProps> = (props) => {
-  return (
-    <button className="button">
-      <img src={`../../assets/${props.iconName}.png`} />
-    </button>
-  );
+  const { state, dispatch } = useContext(store);
+  switch (props.type) {
+    case "like":
+      return (
+        <button
+          className="button"
+          onClick={() => {
+            handleClick(props.type, dispatch);
+          }}
+        >
+          <img src={`../../assets/heart.png`} />
+        </button>
+      );
+    case "nope":
+      return (
+        <button
+          className="button"
+          onClick={() => {
+            handleClick(props.type, dispatch);
+          }}
+        >
+          <img src={`../../assets/close.png`} />
+        </button>
+      );
+  }
 };
 
 export default Button;

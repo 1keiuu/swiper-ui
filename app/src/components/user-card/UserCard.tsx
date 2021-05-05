@@ -15,11 +15,9 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   let activeClassText: string = "";
 
   const generateActiveClassText = (text: string): string => {
-    if (currentCardIndex == index) activeClassText = text += "--active --first";
-    // else if (currentCardIndex + 1 == index)
-    //   activeClassText = text += "--active --second";
-    // else if (currentCardIndex + 2 == index)
-    //   activeClassText = text += "--active --third";
+    if (currentCardIndex == index) activeClassText = text += "--active --top";
+    else if (currentCardIndex + 1 == index)
+      activeClassText = text += "--active --next";
     return text;
   };
 

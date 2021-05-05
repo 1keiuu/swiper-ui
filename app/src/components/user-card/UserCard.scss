@@ -26,16 +26,10 @@ $topPadding: 50px;
     display: block;
     position: absolute;
   }
-  &.--first {
-    // top: $topPadding;
+  &.--top {
     z-index: 5;
   }
-  &.--second {
-    // top: $topPadding + 8px;
+  &.--next {
     z-index: 4;
-  }
-  &.--third {
-    // top: $topPadding + 16px;
-    z-index: 3;
   }
 }

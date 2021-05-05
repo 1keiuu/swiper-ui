@@ -5,7 +5,7 @@ import "./index.scss";
 import UserCardsList from "./components/user-cards-list/UserCardsList";
 import ButtonGroup from "./components/button-group/ButtonGroup";
 import MediaQuery from "react-responsive";
-
+import { StateProvider } from "./store";
 const App = () => {
   const [userLists, serUserLists] = useState([]);
   useEffect(() => {
@@ -26,4 +26,9 @@ const App = () => {
   );
 };
 
-render(<App />, document.getElementById("app"));
+render(
+  <StateProvider>
+    <App />
+  </StateProvider>,
+  document.getElementById("app")
+);
