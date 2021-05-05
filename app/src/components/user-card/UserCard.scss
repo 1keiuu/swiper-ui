@@ -3,9 +3,10 @@ $topPadding: 50px;
 .user-card {
   background: white;
   border-radius: 8px;
-  display: none;
+  position: absolute;
   height: fit-content;
   box-shadow: 0 1px 5px rgb(0 0 0 / 20%);
+  display: none;
   .user-card__img {
     object-fit: cover;
     border-top-left-radius: 8px;
@@ -22,14 +23,48 @@ $topPadding: 50px;
       font-weight: bold;
     }
   }
-  &.--active {
-    display: block;
-    position: absolute;
-  }
-  &.--top {
+  &.--current {
     z-index: 5;
+    display: block;
   }
   &.--next {
     z-index: 4;
+    display: block;
+  }
+  &.--prev {
+    z-index: 6;
+    display: block;
+  }
+  &.--like {
+    animation: like 1s ease-out forwards;
+  }
+  &.--nope {
+    animation: nope 1s ease-out forwards;
+  }
+}
+
+@keyframes like {
+  0% {
+    right: 0;
+    transform: scale(1.05) rotate(0deg);
+    display: block;
+  }
+  100% {
+    right: -200%;
+    transform: scale(1.05) rotate(15deg);
+    display: none;
+  }
+}
+
+@keyframes nope {
+  0% {
+    left: 0;
+    transform: scale(1.05) rotate(0deg);
+    display: block;
+  }
+  100% {
+    left: -200%;
+    transform: scale(1.05) rotate(-15deg);
+    display: none;
   }
 }

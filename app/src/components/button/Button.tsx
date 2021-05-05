@@ -1,24 +1,25 @@
 import React, { useContext, useState } from "react";
 import "./Button.scss";
-import { store } from "../../store";
+import { currentCardStore } from "../../store/currentCard";
 
 type ButtonProps = {
-  type: string;
+  status: string;
 };
 
-const handleClick = (type: string, dispatch: ({ type: string }) => {}) => {
-  dispatch({ type: "INCREMENT" });
+const handleClick = (status: string, dispatch: ({ type: string }) => {}) => {
+  dispatch({ type: "INCREMENT_INDEX" });
+  dispatch({ type: "CHANGE_STATUS", status: status });
 };
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { state, dispatch } = useContext(store);
-  switch (props.type) {
+  const { state, dispatch } = useContext(currentCardStore);
+  switch (props.status) {
     case "like":
       return (
         <button
           className="button"
           onClick={() => {
-            handleClick(props.type, dispatch);
+            handleClick(props.status, dispatch);
           }}
         >
           <img src={`../../assets/heart.png`} />
@@ -29,7 +30,7 @@ const Button: React.FC<ButtonProps> = (props) => {
         <button
           className="button"
           onClick={() => {
-            handleClick(props.type, dispatch);
+            handleClick(props.status, dispatch);
           }}
         >
           <img src={`../../assets/close.png`} />

@@ -5,7 +5,7 @@ import "./index.scss";
 import UserCardsList from "./components/user-cards-list/UserCardsList";
 import ButtonGroup from "./components/button-group/ButtonGroup";
 import MediaQuery from "react-responsive";
-import { StateProvider } from "./store";
+import { StateProvider } from "./store/currentCard";
 const App = () => {
   const [userLists, serUserLists] = useState([]);
   useEffect(() => {
