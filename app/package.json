@@ -29,12 +29,14 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.14.0",
     "axios": "^0.21.1",
     "lru-cache": "^6.0.0",
     "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "style-loader": "^2.0.0"
+    "style-loader": "^2.0.0",
+    "ts-loader": "^9.1.1"
   }
 }
