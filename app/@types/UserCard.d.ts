@@ -3,4 +3,5 @@ declare type UserCard = {
   name: string;
   imageURL: string;
   age: number;
+  profile: string;
 };

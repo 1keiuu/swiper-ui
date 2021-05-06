@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./UserCard.scss";
 import { CurrentCardStore } from "../../store/CurrentCard";
 
@@ -13,10 +13,11 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   const currentCardIndex = props.currentCardIndex;
   const index = props.index;
   const { state, dispatch } = useContext(CurrentCardStore);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   let activeClassText: string = "";
 
-  const generateActiveClassText = (text: string): string[] => {
+  const userCardClass = (text: string): string[] => {
     const isCurrent = currentCardIndex == index;
     const isPrev = currentCardIndex - 1 == index;
 
@@ -31,20 +32,35 @@ const UserCard: React.FC<UserCardProps> = (props) => {
     return text.split(" ");
   };
 
+  const userCardInnerClass = () => {
+    if (isFlipped) return "--flipped";
+    else return "";
+  };
+
   return (
     <div
       key={user.id}
-      className={generateActiveClassText(activeClassText).join(" ")}
+      className={userCardClass(activeClassText).join(" ")}
+      onClick={() => {
+        setIsFlipped(!isFlipped);
+      }}
     >
-      <img
-        src={user.imageURL}
-        width={330}
-        height={330}
-        className="user-card__img"
-      />
-      <div className="user-card__info">
-        <p className="name-text">{user.name},</p>
-        <p className="age-text">{user.age}</p>
+      <div className={["user-card__inner", userCardInnerClass()].join(" ")}>
+        <div className="user-card__item user-card__front">
+          <img
+            src={user.imageURL}
+            width={330}
+            height={330}
+            className="user-card__img"
+          />
+          <div className="user-card__info">
+            <p className="name-text">{user.name},</p>
+            <p className="age-text">{user.age}</p>
+          </div>
+        </div>
+        <div className="user-card__item user-card__back">
+          <p>{user.profile}</p>
+        </div>
       </div>
     </div>
   );

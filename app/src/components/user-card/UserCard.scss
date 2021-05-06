@@ -2,33 +2,13 @@ $topPadding: 50px;
 
 .user-card {
   background: white;
-  border-radius: 8px;
   position: absolute;
   height: fit-content;
-  box-shadow: 0 1px 5px rgb(0 0 0 / 20%);
   display: none;
-  .user-card__img {
-    object-fit: cover;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-  }
-  .user-card__info {
-    display: flex;
-    padding-left: 10px;
-    .name-text {
-      font-weight: bold;
-      margin-right: 8px;
-    }
-    .age-text {
-      font-weight: bold;
-    }
-  }
+  width: 90%;
+  height: 100%;
   &.--current {
     z-index: 5;
-    display: block;
-  }
-  &.--next {
-    z-index: 4;
     display: block;
   }
   &.--prev {
@@ -40,6 +20,71 @@ $topPadding: 50px;
   }
   &.--nope {
     animation: nope 1s ease-out forwards;
+  }
+  .user-card__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &.--flipped {
+      .user-card__item {
+        &.user-card__front {
+          transform: rotateY(180deg);
+        }
+        &.user-card__back {
+          transform: rotateY(0);
+        }
+      }
+    }
+  }
+
+  .user-card__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    cursor: pointer;
+    transition: transform 1s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: white;
+    box-shadow: 0 1px 5px rgb(0 0 0 / 20%);
+    border-radius: 8px;
+
+    &.user-card__front {
+      .user-card__img {
+        object-fit: cover;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        width: 100%;
+      }
+      .user-card__info {
+        display: flex;
+        background: white;
+        width: 100%;
+        border-radius: 8px;
+        .name-text {
+          padding-left: 10px;
+          font-weight: bold;
+          margin-right: 8px;
+        }
+        .age-text {
+          font-weight: bold;
+        }
+      }
+    }
+    &.user-card__back {
+      border-radius: 8px;
+      transform: rotateY(-180deg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 

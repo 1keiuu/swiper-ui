@@ -14,8 +14,10 @@ const ReloadUserCards: React.FC = () => {
       dispatch({ type: "APPEND_USERS", incomingUsers: res });
     });
   }, []);
-  if (status == "reloading") return <div>取得中...</div>;
-  else if (status == "empty") return <div>empty</div>;
+  if (status == "reloading")
+    return <div className="reload-user__container">取得中...</div>;
+  else if (status == "empty")
+    return <div className="reload-user__container">empty</div>;
 };
 
 export default ReloadUserCards;
