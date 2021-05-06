@@ -5,6 +5,7 @@ type CurrentCardStoreAction = {
   status: string;
   isFlipped: boolean;
 };
+
 type CurrentCardStoreState = {
   index: number;
   status: string;
