@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./ReloadUserCards.scss";
 import { CurrentCardStore } from "../../store/CurrentCard";
-import fetch from "../../lib/fetch";
+import { getUsers } from "../../lib/fetch";
 import { UserStore } from "../../store/User";
 
 const ReloadUserCards: React.FC = () => {
@@ -9,10 +9,14 @@ const ReloadUserCards: React.FC = () => {
   const [status, setStatus] = useState("reloading");
 
   useEffect(() => {
-    fetch((res) => {
-      if (res.length == 0) setStatus("empty");
-      dispatch({ type: "APPEND_USERS", incomingUsers: res });
-    });
+    getUsers()
+      .then((res) => {
+        if (res.data.length == 0) setStatus("empty");
+        dispatch({ type: "APPEND_USERS", incomingUsers: res.data });
+      })
+      .catch((e) => {
+        throw Error(e);
+      });
   }, []);
   if (status == "reloading")
     return <div className="reload-user__container">取得中...</div>;

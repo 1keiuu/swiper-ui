@@ -7,16 +7,10 @@ import ButtonGroup from "./components/button-group/ButtonGroup";
 import MediaQuery from "react-responsive";
 import { CurrentCardProvider } from "./store/CurrentCard";
 import { UserStoreProvider } from "./store/User";
-import fetch from "./lib/fetch";
+import { getUsers } from "./lib/fetch";
 import { UserStore } from "./store/User";
 const App = () => {
   const { state, dispatch } = useContext(UserStore);
-
-  useEffect(() => {
-    fetch((res) => {
-      dispatch({ type: "APPEND_USERS", incomingUsers: res });
-    });
-  }, []);
 
   return (
     <div className="container">

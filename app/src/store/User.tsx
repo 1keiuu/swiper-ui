@@ -15,9 +15,9 @@ const { Provider } = UserStore;
 const UserStoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(
     (state: UserStoreState, action: UserStoreAction) => {
-      const sum = state.users.concat(action.incomingUsers);
       switch (action.type) {
         case "APPEND_USERS":
+          const sum = state.users.concat(action.incomingUsers);
           return { ...state, users: sum };
         default:
           throw new Error();

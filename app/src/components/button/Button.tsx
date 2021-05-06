@@ -14,7 +14,7 @@ const handleClick = (
   if (STATUS_BUTTON_TYPES.includes(buttonType)) {
     dispatch({ type: "INCREMENT_INDEX" });
     dispatch({ type: "CHANGE_STATUS", status: buttonType });
-    dispatch({ type: "SET_IS_FLIPPED", isFlipped: true });
+    dispatch({ type: "SET_IS_FLIPPED", isFlipped: false });
   } else if (buttonType == BUTTON_TYPES.PROFILE.name) {
     dispatch({ type: "TOGGLE_IS_FLIPPED" });
   }
