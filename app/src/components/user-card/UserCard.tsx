@@ -13,7 +13,6 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   const currentCardIndex = props.currentCardIndex;
   const index = props.index;
   const { state, dispatch } = useContext(CurrentCardStore);
-  const [isFlipped, setIsFlipped] = useState(false);
 
   let activeClassText: string = "";
 
@@ -33,7 +32,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   };
 
   const userCardInnerClass = () => {
-    if (isFlipped) return "--flipped";
+    if (state.isFlipped) return "--flipped";
     else return "";
   };
 
@@ -42,7 +41,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
       key={user.id}
       className={userCardClass(activeClassText).join(" ")}
       onClick={() => {
-        setIsFlipped(!isFlipped);
+        dispatch({ type: "TOGGLE_IS_FLIPPED" });
       }}
     >
       <div className={["user-card__inner", userCardInnerClass()].join(" ")}>
