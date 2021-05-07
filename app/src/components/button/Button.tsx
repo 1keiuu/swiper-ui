@@ -8,6 +8,7 @@ import profileImg from "../../../assets/user.png";
 
 type ButtonProps = {
   buttonType: string;
+  isEmpty: boolean;
 };
 
 const handleClick = (
@@ -34,6 +35,7 @@ const Button: React.FC<ButtonProps> = (props) => {
           onClick={() => {
             handleClick(props.buttonType, dispatch);
           }}
+          disabled={props.isEmpty}
         >
           <img src={likeImg} />
         </button>
@@ -45,6 +47,7 @@ const Button: React.FC<ButtonProps> = (props) => {
           onClick={() => {
             handleClick(props.buttonType, dispatch);
           }}
+          disabled={props.isEmpty}
         >
           <img src={nopeImg} />
         </button>
@@ -56,6 +59,7 @@ const Button: React.FC<ButtonProps> = (props) => {
           onClick={() => {
             handleClick(props.buttonType, dispatch, state.isFlipped);
           }}
+          disabled={props.isEmpty}
         >
           <img src={profileImg} />
         </button>

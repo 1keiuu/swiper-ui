@@ -7,14 +7,15 @@ import emptyImg from "../../../assets/empty.jpg";
 
 const ReloadUserCards: React.FC = () => {
   const { state, dispatch } = useContext(UserCardsStore);
-  const [status, setStatus] = useState("reloading");
 
   useEffect(() => {
+    dispatch({ type: "SET_PAGE_STATUS", incomingPageStatus: "reloading" });
+
     getUsers(state.paginationIndex)
       .then((res) => {
         if (!res.data) {
-          setStatus("empty");
           dispatch({ type: "RESET_CARDS" });
+          dispatch({ type: "SET_PAGE_STATUS", incomingPageStatus: "empty" });
           return;
         }
         dispatch({ type: "APPEND_CARDS", incomingCards: res.data });
@@ -24,13 +25,13 @@ const ReloadUserCards: React.FC = () => {
         throw Error(e);
       });
   }, []);
-  if (status == "reloading")
+  if (state.pageStatus == "reloading")
     return (
       <div className="reload-user__container">
         <p>取得中...</p>
       </div>
     );
-  else if (status == "empty")
+  else if (state.pageStatus == "empty")
     return (
       <div className="empty-user__container">
         <p>スワイプできるカードがありません。</p>

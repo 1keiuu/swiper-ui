@@ -13,7 +13,7 @@ const App = () => {
     <div className="container">
       <div className="inner">
         <UserCardsList userLists={state.userCards} />
-        <ButtonGroup />
+        <ButtonGroup isEmpty={state.pageStatus == "empty"} />
       </div>
     </div>
   );

@@ -21,6 +21,12 @@ body {
   }
 }
 
+button:disabled {
+  opacity: 0.5;
+  cursor: unset;
+  touch-action: none;
+}
+
 @supports (-webkit-touch-callout: none) {
   .container {
     height: -webkit-fill-available;
