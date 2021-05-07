@@ -18,10 +18,36 @@ $topPadding: 50px;
     display: block;
   }
   &.--like {
-    animation: like 1s ease-out forwards;
+    animation: like 1.5s ease-out forwards;
+    .user-card__status {
+      &.--like {
+        display: flex !important;
+        justify-content: center;
+        border: 5px solid rgb(18, 195, 18);
+        border-radius: 5px;
+        left: 8px;
+        p {
+          color: rgb(18, 195, 18);
+          font-weight: bold;
+        }
+      }
+    }
   }
   &.--nope {
-    animation: nope 1s ease-out forwards;
+    animation: nope 1.5s ease-out forwards;
+    .user-card__status {
+      &.--nope {
+        display: flex !important;
+        justify-content: center;
+        border: 5px solid red;
+        border-radius: 5px;
+        right: 8px;
+        p {
+          color: red;
+          font-weight: bold;
+        }
+      }
+    }
   }
   .user-card__inner {
     position: relative;
@@ -59,6 +85,7 @@ $topPadding: 50px;
     border-radius: 8px;
 
     &.user-card__front {
+      position: relative;
       .user-card__img {
         object-fit: cover;
         border-top-left-radius: 8px;
@@ -77,6 +104,16 @@ $topPadding: 50px;
         }
         .age-text {
           font-weight: bold;
+        }
+      }
+      .user-card__status {
+        display: none;
+        position: absolute;
+        top: 8px;
+        width: 80px;
+        p {
+          font-size: 20px;
+          margin: 8px;
         }
       }
     }

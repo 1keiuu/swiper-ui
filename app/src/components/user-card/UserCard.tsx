@@ -74,6 +74,12 @@ const UserCard: React.FC<UserCardProps> = (props) => {
     >
       <div className={["user-card__inner", userCardInnerClass()].join(" ")}>
         <div className="user-card__item user-card__front">
+          <div className="user-card__status --like">
+            <p>LIKE</p>
+          </div>
+          <div className="user-card__status --nope">
+            <p>NOPE</p>
+          </div>
           <img
             src={user.imageURL}
             width={330}
