@@ -9,10 +9,11 @@ const ReloadUserCards: React.FC = () => {
   const [status, setStatus] = useState("reloading");
 
   useEffect(() => {
-    getUsers()
+    getUsers(state.paginationIndex)
       .then((res) => {
-        if (res.data.length == 0) setStatus("empty");
+        if (!res.data) setStatus("empty");
         dispatch({ type: "APPEND_CARDS", incomingCards: res.data });
+        dispatch({ type: "INCREMENT_PAGINATION_INDEX" });
       })
       .catch((e) => {
         throw Error(e);

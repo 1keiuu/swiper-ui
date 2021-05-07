@@ -6,9 +6,10 @@ type UserCardsStoreAction = {
 };
 type UserCardsStoreState = {
   userCards: UserCard[];
+  paginationIndex: number;
 };
 
-const initialState: UserCardsStoreState = { userCards: [] };
+const initialState: UserCardsStoreState = { userCards: [], paginationIndex: 0 };
 const UserCardsStore = createContext(initialState);
 const { Provider } = UserCardsStore;
 
@@ -19,6 +20,8 @@ const UserCardsStoreProvider = ({ children }) => {
         case "APPEND_CARDS":
           const sum = state.userCards.concat(action.incomingCards);
           return { ...state, userCards: sum };
+        case "INCREMENT_PAGINATION_INDEX":
+          return { ...state, paginationIndex: state.paginationIndex + 1 };
         default:
           throw new Error();
       }
