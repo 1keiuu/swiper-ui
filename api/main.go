@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 )
-import "github.com/1keiuu/swiper-ui/controller"
+import "github.com/swiper-ui/controller"
 
 func main() {
 	var server http.Server
