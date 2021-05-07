@@ -1,2 +1,1 @@
-cd /Users/ikkei/swiper-ui/api
-heroku container:release web
+git subtree push --prefix api/ heroku main 
