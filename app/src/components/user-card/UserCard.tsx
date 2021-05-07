@@ -16,6 +16,12 @@ const UserCard: React.FC<UserCardProps> = (props) => {
 
   let activeClassText: string = "";
 
+  // NOTE: スワイプ判定用
+  let moveX;
+  let startX;
+  // NOTE: 最低スワイプ量
+  const dist = 30;
+
   const userCardClass = (text: string): string[] => {
     const isCurrent = currentCardIndex == index;
     const isPrev = currentCardIndex - 1 == index;
@@ -42,6 +48,28 @@ const UserCard: React.FC<UserCardProps> = (props) => {
       className={userCardClass(activeClassText).join(" ")}
       onClick={() => {
         dispatch({ type: "TOGGLE_IS_FLIPPED" });
+      }}
+      onTouchStart={(e) => {
+        startX = e.touches[0].pageX;
+      }}
+      onTouchMove={(e) => {
+        moveX = e.changedTouches[0].pageX;
+      }}
+      onTouchEnd={(e) => {
+        const isLeftSwipe = startX > moveX && startX > moveX + dist;
+        const isRightSwipe = startX < moveX && startX + dist < moveX;
+
+        if (isLeftSwipe) {
+          dispatch({ type: "INCREMENT_INDEX" });
+          dispatch({ type: "CHANGE_STATUS", status: "nope" });
+          dispatch({ type: "SET_IS_FLIPPED", isFlipped: false });
+        } else if (isRightSwipe) {
+          dispatch({ type: "INCREMENT_INDEX" });
+          dispatch({ type: "CHANGE_STATUS", status: "like" });
+          dispatch({ type: "SET_IS_FLIPPED", isFlipped: false });
+        }
+        moveX;
+        startX;
       }}
     >
       <div className={["user-card__inner", userCardInnerClass()].join(" ")}>
