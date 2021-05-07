@@ -1,28 +1,29 @@
+// NOTE: 現在表示中のcardの状態
 import React, { createContext, useReducer } from "react";
 
-type CurrentCardStoreAction = {
+type CurrentUserCardStoreAction = {
   type: string;
   status: string;
   isFlipped: boolean;
 };
 
-type CurrentCardStoreState = {
+type CurrentUserCardStoreState = {
   index: number;
   status: string;
   isFlipped: boolean;
 };
 
-const initialState: CurrentCardStoreState = {
+const initialState: CurrentUserCardStoreState = {
   index: 0,
   status: null,
   isFlipped: false,
 };
-const CurrentCardStore = createContext(initialState);
-const { Provider } = CurrentCardStore;
+const CurrentUserCardStore = createContext(initialState);
+const { Provider } = CurrentUserCardStore;
 
-const CurrentCardProvider = ({ children }) => {
+const CurrentUserCardProvider = ({ children }) => {
   const [state, dispatch] = useReducer(
-    (state: CurrentCardStoreState, action: CurrentCardStoreAction) => {
+    (state: CurrentUserCardStoreState, action: CurrentUserCardStoreAction) => {
       switch (action.type) {
         case "INCREMENT_INDEX":
           return { ...state, index: state.index + 1 };
@@ -43,4 +44,4 @@ const CurrentCardProvider = ({ children }) => {
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };
 
-export { CurrentCardStore, CurrentCardProvider };
+export { CurrentUserCardStore, CurrentUserCardProvider };

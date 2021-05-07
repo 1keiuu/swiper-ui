@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./Button.scss";
-import { CurrentCardStore } from "../../store/CurrentCard";
+import { CurrentUserCardStore } from "../../store/CurrentUserCard";
 import { BUTTON_TYPES, STATUS_BUTTON_TYPES } from "../../constants/button";
 import likeImg from "../../../assets/heart.png";
 import nopeImg from "../../../assets/close.png";
@@ -25,7 +25,7 @@ const handleClick = (
 };
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { state, dispatch } = useContext(CurrentCardStore);
+  const { state, dispatch } = useContext(CurrentUserCardStore);
   switch (props.buttonType) {
     case BUTTON_TYPES.LIKE.name:
       return (

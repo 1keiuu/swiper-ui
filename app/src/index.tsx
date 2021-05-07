@@ -5,17 +5,17 @@ import "./index.scss";
 import UserCardsList from "./components/user-cards-list/UserCardsList";
 import ButtonGroup from "./components/button-group/ButtonGroup";
 import MediaQuery from "react-responsive";
-import { CurrentCardProvider } from "./store/CurrentCard";
-import { UserStoreProvider } from "./store/User";
+import { CurrentUserCardProvider } from "./store/CurrentUserCard";
+import { UserCardsStoreProvider } from "./store/UserCards";
 import { getUsers } from "./lib/fetch";
-import { UserStore } from "./store/User";
+import { UserCardsStore } from "./store/UserCards";
 const App = () => {
-  const { state, dispatch } = useContext(UserStore);
+  const { state, dispatch } = useContext(UserCardsStore);
 
   return (
     <div className="container">
       <div className="inner">
-        <UserCardsList userLists={state.users} />
+        <UserCardsList userLists={state.userCards} />
         <ButtonGroup />
       </div>
     </div>
@@ -23,10 +23,10 @@ const App = () => {
 };
 
 render(
-  <CurrentCardProvider>
-    <UserStoreProvider>
+  <CurrentUserCardProvider>
+    <UserCardsStoreProvider>
       <App />
-    </UserStoreProvider>
-  </CurrentCardProvider>,
+    </UserCardsStoreProvider>
+  </CurrentUserCardProvider>,
   document.getElementById("app")
 );

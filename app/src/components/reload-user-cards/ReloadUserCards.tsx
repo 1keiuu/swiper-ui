@@ -1,19 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./ReloadUserCards.scss";
-import { CurrentCardStore } from "../../store/CurrentCard";
+import { CurrentUserCardStore } from "../../store/CurrentUserCard";
 import { getUsers } from "../../lib/fetch";
-import { UserStore } from "../../store/User";
+import { UserCardsStore } from "../../store/UserCards";
 
 const ReloadUserCards: React.FC = () => {
-  const { state, dispatch } = useContext(UserStore);
+  const { state, dispatch } = useContext(UserCardsStore);
   const [status, setStatus] = useState("reloading");
 
   useEffect(() => {
     getUsers()
       .then((res) => {
         if (res.data.length == 0) setStatus("empty");
-        console.log(res.data);
-        dispatch({ type: "APPEND_USERS", incomingUsers: res.data });
+        dispatch({ type: "APPEND_CARDS", incomingCards: res.data });
       })
       .catch((e) => {
         throw Error(e);

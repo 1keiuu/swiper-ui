@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./UserCard.scss";
-import { CurrentCardStore } from "../../store/CurrentCard";
+import { CurrentUserCardStore } from "../../store/CurrentUserCard";
 
 type UserCardProps = {
   user: UserCard;
@@ -12,7 +12,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   const user = props.user;
   const currentCardIndex = props.currentCardIndex;
   const index = props.index;
-  const { state, dispatch } = useContext(CurrentCardStore);
+  const { state, dispatch } = useContext(CurrentUserCardStore);
 
   let activeClassText: string = "";
 
