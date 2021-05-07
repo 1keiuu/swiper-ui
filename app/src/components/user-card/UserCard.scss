@@ -3,10 +3,12 @@ $topPadding: 50px;
 .user-card {
   background: white;
   position: absolute;
-  height: fit-content;
+  height: 400px;
   display: none;
   width: 90%;
-  height: 100%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
   &.--current {
     z-index: 5;
     display: block;

@@ -20,7 +20,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   let moveX;
   let startX;
   // NOTE: 最低スワイプ量
-  const dist = 30;
+  const dist = 70;
 
   const userCardClass = (text: string): string[] => {
     const isCurrent = currentCardIndex == index;

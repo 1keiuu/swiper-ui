@@ -20,3 +20,11 @@ body {
     align-items: center;
   }
 }
+
+/* Safari用のハックは、Chromeに適用されないようにする */
+@supports (-webkit-touch-callout: none) {
+  .container {
+    /* Safari用のハック */
+    height: -webkit-fill-available;
+  }
+}
