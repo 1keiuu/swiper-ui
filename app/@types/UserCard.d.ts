@@ -1,7 +1,7 @@
 declare type UserCard = {
   id: number;
   name: string;
-  imageURL: string;
+  imgURL: string;
   age: number;
   profile: string;
 };

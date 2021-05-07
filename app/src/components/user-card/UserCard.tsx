@@ -23,6 +23,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   const dist = 70;
 
   const userCardClass = (text: string): string[] => {
+    // NOTE: カードの状態(current / next / prev /like / nope)の判定をしてclassを適用する
     const isCurrent = currentCardIndex == index;
     const isPrev = currentCardIndex - 1 == index;
 
@@ -38,6 +39,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   };
 
   const userCardInnerClass = () => {
+    // NOTE: flipしている状態かどうか
     if (state.isFlipped) return "--flipped";
     else return "";
   };
@@ -60,6 +62,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
         const isRightSwipe = startX < moveX && startX + dist < moveX;
 
         if (isLeftSwipe) {
+          // FIXME: like/nope後の状態管理系処理を共通化したい
           dispatch({ type: "INCREMENT_INDEX" });
           dispatch({ type: "CHANGE_STATUS", status: "nope" });
           dispatch({ type: "SET_IS_FLIPPED", isFlipped: false });
@@ -81,7 +84,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
             <p>NOPE</p>
           </div>
           <img
-            src={user.imageURL}
+            src={user.imgURL}
             width={330}
             height={330}
             className="user-card__img"

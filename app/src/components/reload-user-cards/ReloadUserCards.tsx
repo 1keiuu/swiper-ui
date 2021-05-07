@@ -12,6 +12,7 @@ const ReloadUserCards: React.FC = () => {
     getUsers()
       .then((res) => {
         if (res.data.length == 0) setStatus("empty");
+        console.log(res.data);
         dispatch({ type: "APPEND_USERS", incomingUsers: res.data });
       })
       .catch((e) => {
