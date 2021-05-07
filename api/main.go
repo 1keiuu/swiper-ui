@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"os"
 )
-import "github.com/swiper-ui/controller"
+import controller "swiper-ui/api/controller"
 
 func main() {
 	var server http.Server
-	http.HandleFunc("/users", controller.getUsers)
+	http.HandleFunc("/users", controller.GetUsers)
 	port := os.Getenv("PORT")
 	if port == "" {
 		server.Addr = ":8888"
