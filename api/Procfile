@@ -1,1 +1,1 @@
-web: fresh
+web: go build -o main && ./main
