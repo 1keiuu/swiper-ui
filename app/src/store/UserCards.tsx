@@ -20,6 +20,8 @@ const UserCardsStoreProvider = ({ children }) => {
         case "APPEND_CARDS":
           const sum = state.userCards.concat(action.incomingCards);
           return { ...state, userCards: sum };
+        case "RESET_CARDS":
+          return { ...state, userCards: [] };
         case "INCREMENT_PAGINATION_INDEX":
           return { ...state, paginationIndex: state.paginationIndex + 1 };
         default:

@@ -3,6 +3,7 @@ import "./ReloadUserCards.scss";
 import { CurrentUserCardStore } from "../../store/CurrentUserCard";
 import { getUsers } from "../../lib/fetch";
 import { UserCardsStore } from "../../store/UserCards";
+import emptyImg from "../../../assets/empty.jpg";
 
 const ReloadUserCards: React.FC = () => {
   const { state, dispatch } = useContext(UserCardsStore);
@@ -11,7 +12,11 @@ const ReloadUserCards: React.FC = () => {
   useEffect(() => {
     getUsers(state.paginationIndex)
       .then((res) => {
-        if (!res.data) setStatus("empty");
+        if (!res.data) {
+          setStatus("empty");
+          dispatch({ type: "RESET_CARDS" });
+          return;
+        }
         dispatch({ type: "APPEND_CARDS", incomingCards: res.data });
         dispatch({ type: "INCREMENT_PAGINATION_INDEX" });
       })
@@ -20,9 +25,19 @@ const ReloadUserCards: React.FC = () => {
       });
   }, []);
   if (status == "reloading")
-    return <div className="reload-user__container">取得中...</div>;
+    return (
+      <div className="reload-user__container">
+        <p>取得中...</p>
+      </div>
+    );
   else if (status == "empty")
-    return <div className="reload-user__container">empty</div>;
+    return (
+      <div className="empty-user__container">
+        <p>スワイプできるカードがありません。</p>
+        <p>時間を置いてから再度お試しください。</p>
+        <img src={emptyImg} />
+      </div>
+    );
 };
 
 export default ReloadUserCards;

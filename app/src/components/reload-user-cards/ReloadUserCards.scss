@@ -3,4 +3,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  p {
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    line-height: 40px;
+    font-size: 17px;
+  }
+}
+
+.empty-user__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 70%;
+  }
+  p {
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    line-height: 40px;
+    font-size: 17px;
+  }
 }
