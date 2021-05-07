@@ -2,6 +2,10 @@ import React, { useContext, useState } from "react";
 import "./Button.scss";
 import { CurrentCardStore } from "../../store/CurrentCard";
 import { BUTTON_TYPES, STATUS_BUTTON_TYPES } from "../../constants/button";
+import likeImg from "../../../assets/heart.png";
+import nopeImg from "../../../assets/close.png";
+import profileImg from "../../../assets/user.png";
+
 type ButtonProps = {
   buttonType: string;
 };
@@ -31,7 +35,7 @@ const Button: React.FC<ButtonProps> = (props) => {
             handleClick(props.buttonType, dispatch);
           }}
         >
-          <img src={`../../assets/heart.png`} />
+          <img src={likeImg} />
         </button>
       );
     case BUTTON_TYPES.NOPE.name:
@@ -42,7 +46,7 @@ const Button: React.FC<ButtonProps> = (props) => {
             handleClick(props.buttonType, dispatch);
           }}
         >
-          <img src={`../../assets/close.png`} />
+          <img src={nopeImg} />
         </button>
       );
     case BUTTON_TYPES.PROFILE.name:
@@ -53,7 +57,7 @@ const Button: React.FC<ButtonProps> = (props) => {
             handleClick(props.buttonType, dispatch, state.isFlipped);
           }}
         >
-          <img src={`../../assets/user.png`} />
+          <img src={profileImg} />
         </button>
       );
   }
