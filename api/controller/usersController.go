@@ -35,11 +35,16 @@ func GetUsers(res http.ResponseWriter, req *http.Request) {
 	// NOTE: レスポンスで返すuserの範囲
 	start := index * per
 	end := (index+1)*per - 1
-	// NOTE: 指定された範囲の末尾がuserの総数が越えた場合、endをuserの総数にする
-	if end >= len(users) {
-		end = len(users)
+	// NOTE: 最初のindexがuserの総数を越えた場合はnilを返す
+	if start >= len(users) {
+		users = nil
+	} else {
+		// NOTE: 指定された範囲の末尾がuserの総数が越えた場合、endをuserの総数にする
+		if end >= len(users) {
+			end = len(users)
+		}
+		users = users[start:end]
 	}
-	users = users[start:end]
 	res.Header().Set("Access-Control-Allow-Headers", "*")
 	res.Header().Set("Access-Control-Allow-Origin", "*")
 	res.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
