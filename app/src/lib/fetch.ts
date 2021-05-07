@@ -1,6 +1,6 @@
 import axios from "axios";
 // TODO: envにしたい
-const API_URL = "https://qiita.com/v2okimochi/items/c85e199c210a8d32cbdb";
+const API_BASE_URL = "https://swiper-ui.herokuapp.com";
 export const getUsers = () => {
-  return axios.get(`${API_URL}/users`);
+  return axios.get(`${API_BASE_URL}/users`);
 };
