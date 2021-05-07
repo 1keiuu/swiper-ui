@@ -7,7 +7,7 @@ type UserCardsListProps = {
   userLists: UserCard[];
 };
 
-const UserCardsList: React.FC<UserCardsListProps> = (props) => {
+const UserCardsList: React.FC<UserCardsListProps> = (props, i) => {
   const { state } = useContext(CurrentCardStore);
   if (props.userLists.length <= state.index) {
     return <ReloadUserCards />;
@@ -15,7 +15,12 @@ const UserCardsList: React.FC<UserCardsListProps> = (props) => {
     return (
       <div className="user-cards__list">
         {props.userLists.map((user, i) => (
-          <UserCard user={user} index={i} currentCardIndex={state.index} />
+          <UserCard
+            user={user}
+            index={i}
+            currentCardIndex={state.index}
+            key={`user-card-${i}`}
+          />
         ))}
       </div>
     );

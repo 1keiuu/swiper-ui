@@ -4,9 +4,9 @@
   "profile": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve",
+    "dev": "NODE_ENV=development webpack serve --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "NODE_ENV=production webpack --progress --colors --mode production"
   },
   "keywords": [],
   "author": "",

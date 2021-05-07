@@ -5,8 +5,9 @@ const src = path.resolve(__dirname, "src");
 const dist = path.resolve(__dirname, "dist");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const environment = process.env.NODE_ENV || "development";
+
 module.exports = {
-  mode: "production",
   entry: src + "/index.tsx",
   output: {
     path: dist,
@@ -55,6 +56,9 @@ module.exports = {
   ],
   resolve: {
     extensions: [".js", ".ts", ".tsx"],
+    alias: {
+      config$: path.resolve(__dirname, `config/${environment}.ts`),
+    },
   },
   devServer: {
     open: true,
