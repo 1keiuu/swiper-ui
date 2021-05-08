@@ -1,37 +1,41 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./ReloadUserCards.scss";
-import { CurrentUserCardStore } from "../../store/CurrentUserCard";
+import { CurrentUserCardStore } from "../../context/CurrentUserCardContext";
 import { getUsers } from "../../lib/fetch";
-import { UserCardsStore } from "../../store/UserCards";
+import {
+  useUserCardsState,
+  useUserCardsDispatch,
+} from "../../context/UserCardsContext";
 import emptyImg from "../../../assets/empty.jpg";
 
 const ReloadUserCards: React.FC = () => {
-  const { state, dispatch } = useContext(UserCardsStore);
+  const userCardsState = useUserCardsState();
+  const UserCardsDispatcher = useUserCardsDispatch();
 
   useEffect(() => {
-    dispatch({ type: "SET_PAGE_STATUS", incomingPageStatus: "reloading" });
+    UserCardsDispatcher.setPageStatus("reloading");
 
-    getUsers(state.paginationIndex)
+    getUsers(userCardsState.paginationIndex)
       .then((res) => {
         if (!res.data) {
-          dispatch({ type: "RESET_CARDS" });
-          dispatch({ type: "SET_PAGE_STATUS", incomingPageStatus: "empty" });
+          UserCardsDispatcher.resetCards();
+          UserCardsDispatcher.setPageStatus("empty");
           return;
         }
-        dispatch({ type: "APPEND_CARDS", incomingCards: res.data });
-        dispatch({ type: "INCREMENT_PAGINATION_INDEX" });
+        UserCardsDispatcher.appendCards(res.data);
+        UserCardsDispatcher.incrementPaginationIndex();
       })
       .catch((e) => {
         throw Error(e);
       });
   }, []);
-  if (state.pageStatus == "reloading")
+  if (userCardsState.pageStatus == "reloading")
     return (
       <div className="reload-user__container">
         <p>取得中...</p>
       </div>
     );
-  else if (state.pageStatus == "empty")
+  else if (userCardsState.pageStatus == "empty")
     return (
       <div className="empty-user__container">
         <p>スワイプできるカードがありません。</p>

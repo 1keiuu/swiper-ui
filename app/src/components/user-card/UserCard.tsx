@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./UserCard.scss";
-import { CurrentUserCardStore } from "../../store/CurrentUserCard";
+import { CurrentUserCardStore } from "../../context/CurrentUserCardContext";
 
 type UserCardProps = {
   user: UserCard;

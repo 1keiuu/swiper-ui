@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import UserCard from "../user-card/UserCard";
 import "./UserCardsList.scss";
-import { CurrentUserCardStore } from "../../store/CurrentUserCard";
+import { CurrentUserCardStore } from "../../context/CurrentUserCardContext";
 import ReloadUserCards from "../reload-user-cards/ReloadUserCards";
 type UserCardsListProps = {
   userLists: UserCard[];

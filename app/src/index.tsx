@@ -3,17 +3,16 @@ import { render } from "react-dom";
 import "./index.scss";
 import UserCardsList from "./components/user-cards-list/UserCardsList";
 import ButtonGroup from "./components/button-group/ButtonGroup";
-import { CurrentUserCardProvider } from "./store/CurrentUserCard";
-import { UserCardsStoreProvider } from "./store/UserCards";
-import { UserCardsStore } from "./store/UserCards";
+import { CurrentUserCardProvider } from "./context/CurrentUserCardContext";
+import { UserCardsProvider } from "./context/UserCardsContext";
+import { useUserCardsState } from "./context/UserCardsContext";
 const App = () => {
-  const { state, dispatch } = useContext(UserCardsStore);
-
+  const userCardsState = useUserCardsState();
   return (
     <div className="container">
       <div className="inner">
-        <UserCardsList userLists={state.userCards} />
-        <ButtonGroup isEmpty={state.pageStatus == "empty"} />
+        <UserCardsList userLists={userCardsState.userCards} />
+        <ButtonGroup isEmpty={userCardsState.pageStatus == "empty"} />
       </div>
     </div>
   );
@@ -21,9 +20,9 @@ const App = () => {
 
 render(
   <CurrentUserCardProvider>
-    <UserCardsStoreProvider>
+    <UserCardsProvider>
       <App />
-    </UserCardsStoreProvider>
+    </UserCardsProvider>
   </CurrentUserCardProvider>,
   document.getElementById("app")
 );
