@@ -31,7 +31,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     case BUTTON_TYPES.LIKE.name:
       return (
         <button
-          className="button"
+          className="button --like"
           onClick={() => {
             handleClick(props.buttonType, dispatch);
           }}
@@ -43,7 +43,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     case BUTTON_TYPES.NOPE.name:
       return (
         <button
-          className="button"
+          className="button --nope"
           onClick={() => {
             handleClick(props.buttonType, dispatch);
           }}
@@ -55,7 +55,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     case BUTTON_TYPES.PROFILE.name:
       return (
         <button
-          className="button"
+          className="button --profile"
           onClick={() => {
             handleClick(props.buttonType, dispatch, state.isFlipped);
           }}

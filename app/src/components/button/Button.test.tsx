@@ -2,20 +2,22 @@ import React from "react";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 
 import Button from "./Button";
+import { container } from "webpack";
 
 describe("Button", () => {
   afterEach(() => {
     cleanup();
   });
-  test("render", () => {
+  test("render as before.", () => {
     const { asFragment } = render(<Button buttonType="like" isEmpty={false} />);
     expect(asFragment()).toMatchSnapshot();
   });
-  test("click:count", () => {
-    render(<Button buttonType="like" isEmpty={false} />);
-    // const button = screen.getByText("Increment");
-    // fireEvent.click(button);
-    // fireEvent.click(button);
-    // screen.getByText("Count: 2");
+  test("is active when isEmpty is false.", () => {
+    const rendered = render(<Button buttonType="like" isEmpty={false} />);
+    expect(rendered.container.firstChild).toBeEnabled;
+  });
+  test("is disabled when isEmpty is true.", () => {
+    const rendered = render(<Button buttonType="like" isEmpty={true} />);
+    expect(rendered.container.firstChild).toBeDisabled;
   });
 });

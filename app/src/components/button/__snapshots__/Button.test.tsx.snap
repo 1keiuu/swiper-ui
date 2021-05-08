@@ -3,7 +3,7 @@
 exports[`Button render 1`] = `
 <DocumentFragment>
   <button
-    class="button"
+    class="button --like"
   >
     <img
       src="test-file-stub"
