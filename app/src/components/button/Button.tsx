@@ -7,13 +7,13 @@ import nopeImg from "../../../assets/close.png";
 import profileImg from "../../../assets/user.png";
 
 type ButtonProps = {
-  buttonType: string;
+  buttonType: CardStatus;
   isEmpty: boolean;
 };
 
 const Button: React.FC<ButtonProps> = (props) => {
   const currentUserCardDispatcher = useCurrentUserCardDispatchContext();
-  const handleClick = (buttonType: string) => {
+  const handleClick = (buttonType: CardStatus) => {
     if (STATUS_BUTTON_TYPES.includes(buttonType)) {
       currentUserCardDispatcher.incrementIndex();
       currentUserCardDispatcher.changeStatus(buttonType);

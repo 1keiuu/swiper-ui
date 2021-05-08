@@ -6,7 +6,7 @@ type ButtonGroupProps = { isEmpty: boolean };
 const ButtonGroup: React.FC<ButtonGroupProps> = (props) => {
   return (
     <div className="button__group">
-      {BUTTON_TYPE_OPTIONS.map((type, i) => {
+      {BUTTON_TYPE_OPTIONS.map((type: CardStatus, i: number) => {
         return (
           <Button
             buttonType={type}
