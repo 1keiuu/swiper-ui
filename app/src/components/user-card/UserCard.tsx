@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./UserCard.scss";
-import { CurrentUserCardStore } from "../../context/CurrentUserCardContext";
+import {
+  useCurrentUserCardStateContext,
+  useCurrentUserCardDispatchContext,
+} from "../../context/CurrentUserCardContext";
 
 type UserCardProps = {
   user: UserCard;
@@ -12,7 +15,9 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   const user = props.user;
   const currentCardIndex = props.currentCardIndex;
   const index = props.index;
-  const { state, dispatch } = useContext(CurrentUserCardStore);
+
+  const currentUserCardState = useCurrentUserCardStateContext();
+  const currentUserCardDispatcher = useCurrentUserCardDispatchContext();
 
   let activeClassText: string = "";
 
@@ -32,15 +37,17 @@ const UserCard: React.FC<UserCardProps> = (props) => {
     else if (currentCardIndex + 1 == index) activeClassText = text += "--next ";
     else if (isPrev) {
       activeClassText = text += "--prev ";
-      if (state.status == "like") activeClassText = text += "--like ";
-      if (state.status == "nope") activeClassText = text += "--nope ";
+      if (currentUserCardState.status == "like")
+        activeClassText = text += "--like ";
+      if (currentUserCardState.status == "nope")
+        activeClassText = text += "--nope ";
     }
     return text.split(" ");
   };
 
   const userCardInnerClass = () => {
     // NOTE: flipしている状態かどうか
-    if (state.isFlipped) return "--flipped";
+    if (currentUserCardState.isFlipped) return "--flipped";
     else return "";
   };
 
@@ -49,7 +56,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
       key={user.id}
       className={userCardClass(activeClassText).join(" ")}
       onClick={() => {
-        dispatch({ type: "TOGGLE_IS_FLIPPED" });
+        currentUserCardDispatcher.toggleIsFlipped();
       }}
       onTouchStart={(e) => {
         startX = e.touches[0].pageX;
@@ -63,13 +70,13 @@ const UserCard: React.FC<UserCardProps> = (props) => {
 
         if (isLeftSwipe) {
           // FIXME: like/nope後の状態管理系処理を共通化したい
-          dispatch({ type: "INCREMENT_INDEX" });
-          dispatch({ type: "CHANGE_STATUS", status: "nope" });
-          dispatch({ type: "SET_IS_FLIPPED", isFlipped: false });
+          currentUserCardDispatcher.incrementIndex();
+          currentUserCardDispatcher.changeStatus("nope");
+          currentUserCardDispatcher.setIsFlipped(false);
         } else if (isRightSwipe) {
-          dispatch({ type: "INCREMENT_INDEX" });
-          dispatch({ type: "CHANGE_STATUS", status: "like" });
-          dispatch({ type: "SET_IS_FLIPPED", isFlipped: false });
+          currentUserCardDispatcher.incrementIndex();
+          currentUserCardDispatcher.changeStatus("like");
+          currentUserCardDispatcher.setIsFlipped(false);
         }
         moveX;
         startX;

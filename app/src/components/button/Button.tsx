@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./Button.scss";
-import { CurrentUserCardStore } from "../../context/CurrentUserCardContext";
+import { useCurrentUserCardDispatchContext } from "../../context/CurrentUserCardContext";
 import { BUTTON_TYPES, STATUS_BUTTON_TYPES } from "../../constants/button";
 import likeImg from "../../../assets/heart.png";
 import nopeImg from "../../../assets/close.png";
@@ -11,29 +11,24 @@ type ButtonProps = {
   isEmpty: boolean;
 };
 
-const handleClick = (
-  buttonType: string,
-  dispatch: ({ type: string }) => {},
-  currentFlipState?: boolean
-) => {
-  if (STATUS_BUTTON_TYPES.includes(buttonType)) {
-    dispatch({ type: "INCREMENT_INDEX" });
-    dispatch({ type: "CHANGE_STATUS", status: buttonType });
-    dispatch({ type: "SET_IS_FLIPPED", isFlipped: false });
-  } else if (buttonType == BUTTON_TYPES.PROFILE.name) {
-    dispatch({ type: "TOGGLE_IS_FLIPPED" });
-  }
-};
-
 const Button: React.FC<ButtonProps> = (props) => {
-  const { state, dispatch } = useContext(CurrentUserCardStore);
+  const currentUserCardDispatcher = useCurrentUserCardDispatchContext();
+  const handleClick = (buttonType: string) => {
+    if (STATUS_BUTTON_TYPES.includes(buttonType)) {
+      currentUserCardDispatcher.incrementIndex();
+      currentUserCardDispatcher.changeStatus(buttonType);
+      currentUserCardDispatcher.setIsFlipped(false);
+    } else if (buttonType == BUTTON_TYPES.PROFILE.name) {
+      currentUserCardDispatcher.toggleIsFlipped();
+    }
+  };
   switch (props.buttonType) {
     case BUTTON_TYPES.LIKE.name:
       return (
         <button
           className="button --like"
           onClick={() => {
-            handleClick(props.buttonType, dispatch);
+            handleClick(props.buttonType);
           }}
           disabled={props.isEmpty}
         >
@@ -45,7 +40,7 @@ const Button: React.FC<ButtonProps> = (props) => {
         <button
           className="button --nope"
           onClick={() => {
-            handleClick(props.buttonType, dispatch);
+            handleClick(props.buttonType);
           }}
           disabled={props.isEmpty}
         >
@@ -57,7 +52,7 @@ const Button: React.FC<ButtonProps> = (props) => {
         <button
           className="button --profile"
           onClick={() => {
-            handleClick(props.buttonType, dispatch, state.isFlipped);
+            handleClick(props.buttonType);
           }}
           disabled={props.isEmpty}
         >

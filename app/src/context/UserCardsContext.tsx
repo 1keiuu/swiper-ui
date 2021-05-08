@@ -19,11 +19,13 @@ type UserCardsDispactch = {
   setPageStatus: (pageStatus: PageStatus) => void;
 };
 
-const UserCardsStateContext = createContext<UserCardsState>({
+const initialState: UserCardsState = {
   userCards: [],
   paginationIndex: 0,
   pageStatus: "reloading",
-});
+};
+
+const UserCardsStateContext = createContext<UserCardsState>(initialState);
 
 const UserCardsDispatchContext = createContext<UserCardsDispactch>({
   appendCards: () => {},
@@ -32,8 +34,10 @@ const UserCardsDispatchContext = createContext<UserCardsDispactch>({
   setPageStatus: () => {},
 });
 
-export const useUserCardsState = () => useContext(UserCardsStateContext);
-export const useUserCardsDispatch = () => useContext(UserCardsDispatchContext);
+export const useUserCardsState = (): UserCardsState =>
+  useContext(UserCardsStateContext);
+export const useUserCardsDispatch = (): UserCardsDispactch =>
+  useContext(UserCardsDispatchContext);
 
 const reducer = (state: UserCardsState, action: UserCardsAction) => {
   const payload = action.payload;
@@ -50,12 +54,6 @@ const reducer = (state: UserCardsState, action: UserCardsAction) => {
     default:
       throw new Error();
   }
-};
-
-const initialState: UserCardsState = {
-  userCards: [],
-  paginationIndex: 0,
-  pageStatus: "reloading",
 };
 
 export const UserCardsProvider = ({ children }) => {

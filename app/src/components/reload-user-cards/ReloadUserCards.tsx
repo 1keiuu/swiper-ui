@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./ReloadUserCards.scss";
-import { CurrentUserCardStore } from "../../context/CurrentUserCardContext";
 import { getUsers } from "../../lib/fetch";
 import {
   useUserCardsState,

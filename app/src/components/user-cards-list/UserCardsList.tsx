@@ -1,15 +1,16 @@
 import React, { useContext, useState } from "react";
 import UserCard from "../user-card/UserCard";
 import "./UserCardsList.scss";
-import { CurrentUserCardStore } from "../../context/CurrentUserCardContext";
+import { useCurrentUserCardStateContext } from "../../context/CurrentUserCardContext";
 import ReloadUserCards from "../reload-user-cards/ReloadUserCards";
 type UserCardsListProps = {
   userLists: UserCard[];
 };
 
 const UserCardsList: React.FC<UserCardsListProps> = (props, i) => {
-  const { state } = useContext(CurrentUserCardStore);
-  if (props.userLists.length <= state.index) {
+  const currentUserCardState = useCurrentUserCardStateContext();
+
+  if (props.userLists.length <= currentUserCardState.index) {
     return <ReloadUserCards />;
   } else {
     return (
@@ -18,7 +19,7 @@ const UserCardsList: React.FC<UserCardsListProps> = (props, i) => {
           <UserCard
             user={user}
             index={i}
-            currentCardIndex={state.index}
+            currentCardIndex={currentUserCardState.index}
             key={`user-card-${i}`}
           />
         ))}
