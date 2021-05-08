@@ -5,3 +5,5 @@ declare type UserCard = {
   age: number;
   profile: string;
 };
+
+declare type CardStatus = "like" | "nope" | "";

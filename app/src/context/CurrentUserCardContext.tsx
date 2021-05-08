@@ -4,19 +4,19 @@ import React, { createContext, useContext, useReducer } from "react";
 type CurrentUserCardAction = {
   type: string;
   payload?: {
-    status?: string;
+    status?: CardStatus;
     isFlipped?: boolean;
   };
 };
 type CurrentUserCardState = {
   index: number;
-  status: string;
+  status: CardStatus;
   isFlipped: boolean;
 };
 type CurrentUserCardDispatch = {
   incrementIndex: () => void;
   decrementIndex: () => void;
-  changeStatus: (status: string) => void;
+  changeStatus: (status: CardStatus) => void;
   setIsFlipped: (isFlipped: boolean) => void;
   toggleIsFlipped: () => void;
 };
@@ -73,7 +73,7 @@ export const CurrentUserCardProvider = ({ children }) => {
   const decrementIndex = () => {
     dispatch({ type: "DECREMENT_INDEX" });
   };
-  const changeStatus = (status: string) => {
+  const changeStatus = (status: CardStatus) => {
     dispatch({ type: "CHANGE_STATUS", payload: { status: status } });
   };
   const setIsFlipped = (isFlipped: boolean) => {
