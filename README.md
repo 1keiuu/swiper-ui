@@ -27,3 +27,7 @@ https://swiper-ui.vercel.app
 
 **Infra**  
 - Docker  
+
+## memo
+- テストとContextの構成はこの[zenn book](https://zenn.dev/tkdn/books/react-testing-patterns/viewer/context-and-testing)を参考に
+    - Contextに関わる部分であっても、コンポーネントのテストは原則表示と操作に関する物のみ。Contextには個別でテストを作成する。
