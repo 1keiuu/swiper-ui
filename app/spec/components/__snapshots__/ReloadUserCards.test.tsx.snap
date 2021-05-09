@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReloadUserCards render as before. 1`] = `
+<DocumentFragment>
+  <div
+    class="reload-user__container"
+  >
+    <p>
+      取得中...
+    </p>
+  </div>
+</DocumentFragment>
+`;

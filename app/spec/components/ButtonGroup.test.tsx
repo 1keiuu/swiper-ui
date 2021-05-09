@@ -1,8 +1,8 @@
 import React from "react";
 import { cleanup, render } from "@testing-library/react";
 
-import ButtonGroup from "./ButtonGroup";
-import { BUTTON_TYPE_OPTIONS } from "../../constants/button";
+import ButtonGroup from "../../src/components/button-group/ButtonGroup";
+import { BUTTON_TYPE_OPTIONS } from "../../src/constants/BUTTON";
 
 // HACK: constantのテストをここに書くべきか。個別で作るか。
 describe("constant", () => {
@@ -37,5 +37,9 @@ describe("ButtonGroup", () => {
       (isNotEmptyButtonGroup.container.firstChild as HTMLElement).children
         .length
     ).toBe(BUTTON_TYPE_OPTIONS.length);
+  });
+  test("contains children.IN Addition, children's length changes depending on 'BUTTON_TYPE_OPTIONS'.", () => {
+    // TODO: レンダリングされるボタンの数がBUTTON_TYPE_OPTIONSの数によって変化するかを確認したい。
+    // 難点としては、BUTTON_TYPE_OPTIONSの数を変更するのが難しい。fsなど使って無理やり書き換えるか、そもそもの実装を変える?
   });
 });
