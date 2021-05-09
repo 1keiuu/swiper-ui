@@ -13,10 +13,12 @@ describe("Button", () => {
   });
   test("is active when isEmpty is false.", () => {
     const rendered = render(<Button buttonType="like" isEmpty={false} />);
+    expect(rendered.container.children.length).toBe(1);
     expect(rendered.container.firstChild).toBeEnabled;
   });
   test("is disabled when isEmpty is true.", () => {
     const rendered = render(<Button buttonType="like" isEmpty={true} />);
+    expect(rendered.container.children.length).toBe(1);
     expect(rendered.container.firstChild).toBeDisabled;
   });
 });

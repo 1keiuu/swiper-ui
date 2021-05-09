@@ -69,7 +69,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
         const isRightSwipe = startX < moveX && startX + dist < moveX;
 
         if (isLeftSwipe) {
-          // FIXME: like/nope後の状態管理系処理を共通化したい
+          // HACK: like/nope後の状態管理系処理を共通化したい
           currentUserCardDispatcher.incrementIndex();
           currentUserCardDispatcher.changeStatus("nope");
           currentUserCardDispatcher.setIsFlipped(false);

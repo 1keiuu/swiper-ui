@@ -7,16 +7,17 @@ import nopeImg from "../../../assets/close.png";
 import profileImg from "../../../assets/user.png";
 
 type ButtonProps = {
-  buttonType: CardStatus;
+  buttonType: ButtonTypeOption;
   isEmpty: boolean;
 };
 
 const Button: React.FC<ButtonProps> = (props) => {
   const currentUserCardDispatcher = useCurrentUserCardDispatchContext();
-  const handleClick = (buttonType: CardStatus) => {
+  const handleClick = (buttonType: ButtonTypeOption) => {
     if (STATUS_BUTTON_TYPES.includes(buttonType)) {
       currentUserCardDispatcher.incrementIndex();
-      currentUserCardDispatcher.changeStatus(buttonType);
+      // NOTE: STATUS_BUTTON_TYPESに含まれるbuttonTypeなので、CardStatusへtypeを変更
+      currentUserCardDispatcher.changeStatus(buttonType as CardStatus);
       currentUserCardDispatcher.setIsFlipped(false);
     } else if (buttonType == BUTTON_TYPES.PROFILE.name) {
       currentUserCardDispatcher.toggleIsFlipped();

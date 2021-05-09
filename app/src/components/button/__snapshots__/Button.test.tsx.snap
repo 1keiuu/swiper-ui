@@ -11,3 +11,15 @@ exports[`Button render 1`] = `
   </button>
 </DocumentFragment>
 `;
+
+exports[`Button render as before. 1`] = `
+<DocumentFragment>
+  <button
+    class="button --like"
+  >
+    <img
+      src="test-file-stub"
+    />
+  </button>
+</DocumentFragment>
+`;
