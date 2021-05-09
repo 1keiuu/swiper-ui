@@ -10,6 +10,7 @@ const config = {
     "\\.(css|scss)$": "identity-obj-proxy",
     "^config$": `<rootDir>/config/${environment}.ts`,
   },
+  modulePathIgnorePatterns: ["<rootDir>/spec/__tests__/ignore"],
 };
 
 module.exports = config;

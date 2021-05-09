@@ -1,8 +1,8 @@
 import React from "react";
 import { cleanup, render } from "@testing-library/react";
 
-import ButtonGroup from "../../src/components/button-group/ButtonGroup";
-import { BUTTON_TYPE_OPTIONS } from "../../src/constants/BUTTON";
+import ButtonGroup from "../../../src/components/button-group/ButtonGroup";
+import { BUTTON_TYPE_OPTIONS } from "../../../src/constants/BUTTON";
 
 // HACK: constantのテストをここに書くべきか。個別で作るか。
 describe("constant", () => {
