@@ -38,7 +38,7 @@ describe("UserCard Component", () => {
     const userCarAge = userCardInfo.childNodes[1];
     expect((userCardImage as HTMLImageElement).src).toBe(valideUser.imgURL);
     expect(userCardName.textContent).toBe(`${valideUser.name},`);
-    expect(userCarAge.textContent).toBe(valideUser.age);
+    expect(userCarAge.textContent).toBe(String(valideUser.age));
   });
   test("render back UI correctly.", () => {
     const { asFragment } = render(

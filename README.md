@@ -1,4 +1,4 @@
-# swiper-ui
+# swiper-ui [![test/deployment](https://github.com/1keiuu/swiper-ui/actions/workflows/deploy.yml/badge.svg)](https://github.com/1keiuu/swiper-ui/actions/workflows/deploy.yml)
 
 ## 本番環境
 https://swiper-ui.vercel.app
