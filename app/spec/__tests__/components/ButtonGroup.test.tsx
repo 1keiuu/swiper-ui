@@ -28,15 +28,12 @@ describe("ButtonGroup", () => {
     const isNotEmptyButtonGroup = render(
       <ButtonGroup isEmpty={false}></ButtonGroup>
     );
-    // HACK: 孫Nodeを取得する際はこのやり方で問題ない？
-    // firstChildの型がChildNodeなのでchildrenがpropertyにない為HTMLElementへ変換している
-    expect(
-      (isEmptyButtonGroup.container.firstChild as HTMLElement).children.length
-    ).toBe(BUTTON_TYPE_OPTIONS.length);
-    expect(
-      (isNotEmptyButtonGroup.container.firstChild as HTMLElement).children
-        .length
-    ).toBe(BUTTON_TYPE_OPTIONS.length);
+    expect(isEmptyButtonGroup.container.firstChild.childNodes.length).toBe(
+      BUTTON_TYPE_OPTIONS.length
+    );
+    expect(isNotEmptyButtonGroup.container.firstChild.childNodes.length).toBe(
+      BUTTON_TYPE_OPTIONS.length
+    );
   });
   test("contains children.IN Addition, children's length changes depending on 'BUTTON_TYPE_OPTIONS'.", () => {
     // TODO: レンダリングされるボタンの数がBUTTON_TYPE_OPTIONSの数によって変化するかを確認したい。
