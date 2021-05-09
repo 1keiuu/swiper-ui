@@ -26,6 +26,7 @@ jobs:
       working-directory: ./app
   deploy:
     runs-on: ubuntu-latest
+    needs: test
     steps:
     - name: Vercel Deploy
       uses: amondnet/vercel-action@v20.0.0
