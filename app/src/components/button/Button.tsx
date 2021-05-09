@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./Button.scss";
 import { useCurrentUserCardDispatchContext } from "../../context/CurrentUserCardContext";
-import { BUTTON_TYPES, STATUS_BUTTON_TYPES } from "../../constants/button";
+import { BUTTON_TYPES, STATUS_BUTTON_TYPES } from "../../constants/BUTTON";
 import likeImg from "../../../assets/heart.png";
 import nopeImg from "../../../assets/close.png";
 import profileImg from "../../../assets/user.png";

@@ -6,6 +6,7 @@ import {
   useUserCardsDispatch,
 } from "../../context/UserCardsContext";
 import emptyImg from "../../../assets/empty.jpg";
+import { PAGE_STATUS } from "../../constants/PAGE";
 
 const ReloadUserCards: React.FC = () => {
   const userCardsState = useUserCardsState();
@@ -28,13 +29,13 @@ const ReloadUserCards: React.FC = () => {
         throw Error(e);
       });
   }, []);
-  if (userCardsState.pageStatus == "reloading")
+  if (userCardsState.pageStatus == PAGE_STATUS.RELOADING.name)
     return (
       <div className="reload-user__container">
         <p>取得中...</p>
       </div>
     );
-  else if (userCardsState.pageStatus == "empty")
+  else if (userCardsState.pageStatus == PAGE_STATUS.EMPTY.name)
     return (
       <div className="empty-user__container">
         <p>スワイプできるカードがありません。</p>

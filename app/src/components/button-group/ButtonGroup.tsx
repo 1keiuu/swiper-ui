@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ButtonGroup.scss";
 import Button from "../button/Button";
-import { BUTTON_TYPE_OPTIONS } from "../../constants/button";
+import { BUTTON_TYPE_OPTIONS } from "../../constants/BUTTON";
 type ButtonGroupProps = { isEmpty: boolean };
 const ButtonGroup: React.FC<ButtonGroupProps> = (props) => {
   return (
