@@ -30,9 +30,10 @@ jobs:
     strategy:
       matrix:
         node-version: [10.x, 12.x, 14.x, 15.x]
-        
+
     steps:
-    - uses: amondnet/vercel-action@v20
+    - name: Vercel Deploy
+    - uses: amondnet/vercel-action@v20.0.0
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }} 
           vercel-args: '--prod' 
