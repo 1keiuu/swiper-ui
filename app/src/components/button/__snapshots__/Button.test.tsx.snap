@@ -1,17 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button render 1`] = `
-<DocumentFragment>
-  <button
-    class="button --like"
-  >
-    <img
-      src="test-file-stub"
-    />
-  </button>
-</DocumentFragment>
-`;
-
 exports[`Button render as before. 1`] = `
 <DocumentFragment>
   <button
