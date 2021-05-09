@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserCard Component is rendered as before. 1`] = `
+<DocumentFragment>
+  <div
+    class="user-card --current "
+  >
+    <div
+      class="user-card__inner "
+    >
+      <div
+        class="user-card__item user-card__front"
+      >
+        <div
+          class="user-card__status-budge --like"
+        >
+          <p>
+            LIKE
+          </p>
+        </div>
+        <div
+          class="user-card__status-budge --nope"
+        >
+          <p>
+            NOPE
+          </p>
+        </div>
+        <img
+          alt="user image"
+          class="user-card__img"
+          height="330"
+          src="http://localhost/image"
+          width="330"
+        />
+        <div
+          class="user-card__info"
+        >
+          <p
+            class="name-text"
+          >
+            test1,
+          </p>
+          <p
+            class="age-text"
+          >
+            21
+          </p>
+        </div>
+      </div>
+      <div
+        class="user-card__item user-card__back"
+      >
+        <p>
+          test1's profile
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

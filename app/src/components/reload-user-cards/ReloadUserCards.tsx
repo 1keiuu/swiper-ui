@@ -40,7 +40,7 @@ const ReloadUserCards: React.FC = () => {
       <div className="empty-user__container">
         <p>スワイプできるカードがありません。</p>
         <p>時間を置いてから再度お試しください。</p>
-        <img src={emptyImg} />
+        <img src={emptyImg} alt="empty image" />
       </div>
     );
 };

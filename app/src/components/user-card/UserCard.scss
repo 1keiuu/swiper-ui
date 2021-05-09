@@ -20,7 +20,7 @@ $topPadding: 50px;
   }
   &.--like {
     animation: like 1.5s ease-out forwards;
-    .user-card__status {
+    .user-card__status-budge {
       &.--like {
         display: flex !important;
         justify-content: center;
@@ -36,7 +36,7 @@ $topPadding: 50px;
   }
   &.--nope {
     animation: nope 1.5s ease-out forwards;
-    .user-card__status {
+    .user-card__status-budge {
       &.--nope {
         display: flex !important;
         justify-content: center;
@@ -107,7 +107,7 @@ $topPadding: 50px;
           font-weight: bold;
         }
       }
-      .user-card__status {
+      .user-card__status-budge {
         display: none;
         position: absolute;
         top: 8px;

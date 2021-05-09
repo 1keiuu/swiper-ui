@@ -33,7 +33,7 @@ const Button: React.FC<ButtonProps> = (props) => {
           }}
           disabled={props.isEmpty}
         >
-          <img src={likeImg} />
+          <img src={likeImg} alt="button icon" />
         </button>
       );
     case BUTTON_TYPES.NOPE.name:
@@ -45,7 +45,7 @@ const Button: React.FC<ButtonProps> = (props) => {
           }}
           disabled={props.isEmpty}
         >
-          <img src={nopeImg} />
+          <img src={nopeImg} alt="button icon" />
         </button>
       );
     case BUTTON_TYPES.PROFILE.name:
@@ -57,7 +57,7 @@ const Button: React.FC<ButtonProps> = (props) => {
           }}
           disabled={props.isEmpty}
         >
-          <img src={profileImg} />
+          <img src={profileImg} alt="button icon" />
         </button>
       );
   }

@@ -6,18 +6,7 @@ exports[`Button Component render as before. 1`] = `
     class="button --like"
   >
     <img
-      src="test-file-stub"
-    />
-  </button>
-</DocumentFragment>
-`;
-
-exports[`Button render as before. 1`] = `
-<DocumentFragment>
-  <button
-    class="button --like"
-  >
-    <img
+      alt="button icon"
       src="test-file-stub"
     />
   </button>
