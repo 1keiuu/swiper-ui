@@ -3,6 +3,8 @@
 ## 本番環境
 https://swiper-ui.vercel.app
 
+## ローカルのセットアップ
+
 ## 実装した機能
 - [x] 下部のボタンでlike/nope/ユーザーのプロフィール確認ができる。
 - [x] like/nopeのアニメーション。カードが反転するアニメーション。
@@ -37,6 +39,9 @@ https://swiper-ui.vercel.app
 **Infra**  
 - Docker  
 
-## memo
-- テストとContextの構成はこの[zenn book](https://zenn.dev/tkdn/books/react-testing-patterns/viewer/context-and-testing)を参考に
+## その他メモ
+- APIのレスポンスタイム
+    - 本番環境はherokuのcold startがある為初回アクセス時はレスポンスが遅いです。
+    - その後はフロントでローディングを挟みたいので、API側で2秒sleepさせてからレスポンスを返しています。
+- テストとContextの構成はこの[zenn book](https://zenn.dev/tkdn/books/react-testing-patterns/viewer/context-and-testing)を参考に。
     - Contextに関わる部分であっても、コンポーネントのテストは原則表示と操作に関する物のみ。Contextは個別でテストを作成する。
