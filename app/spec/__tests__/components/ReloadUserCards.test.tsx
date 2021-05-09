@@ -5,22 +5,23 @@ import ReloadUserCards from "../ignore/ReloadUserCards";
 
 import * as UserCardsContext from "../../../src/context/UserCardsContext";
 
-// NOTE: Contextをスパイ化
-let userCardsStateSpy: jest.SpyInstance<unknown>;
-beforeEach(() => {
-  userCardsStateSpy = jest.spyOn(UserCardsContext, "useUserCardsState");
-  const initialState: UserCardsState = {
-    userCards: [],
-    paginationIndex: 0,
-    pageStatus: "reloading",
-  };
-  userCardsStateSpy.mockImplementation(() => initialState);
-});
-afterEach(() => {
-  userCardsStateSpy.mockClear();
-});
+describe("ReloadUserCards Component", () => {
+  // NOTE: Contextをスパイ化
+  let userCardsStateSpy: jest.SpyInstance<unknown>;
+  beforeEach(() => {
+    userCardsStateSpy = jest.spyOn(UserCardsContext, "useUserCardsState");
+    const initialState: UserCardsState = {
+      userCards: [],
+      paginationIndex: 0,
+      pageStatus: "reloading",
+    };
+    userCardsStateSpy.mockImplementation(() => initialState);
+  });
+  afterEach(() => {
+    userCardsStateSpy.mockClear();
+    cleanup();
+  });
 
-describe("ReloadUserCards", () => {
   test("render reloading message when pageStatus is initial state.", () => {
     const { asFragment } = render(<ReloadUserCards />);
     expect(asFragment().firstChild.childNodes.length).toBe(1);

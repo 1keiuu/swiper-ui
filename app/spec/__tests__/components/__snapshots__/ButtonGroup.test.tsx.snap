@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ButtonGroup Component render as before. 1`] = `
+<DocumentFragment>
+  <div
+    class="button__group"
+  >
+    <button
+      class="button --nope"
+    >
+      <img
+        src="test-file-stub"
+      />
+    </button>
+    <button
+      class="button --profile"
+    >
+      <img
+        src="test-file-stub"
+      />
+    </button>
+    <button
+      class="button --like"
+    >
+      <img
+        src="test-file-stub"
+      />
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`ButtonGroup render as before. 1`] = `
 <DocumentFragment>
   <div

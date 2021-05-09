@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ReloadUserCards Component render empty message when pageStatus is 'empty'. 1`] = `
+<DocumentFragment>
+  <div
+    class="empty-user__container"
+  >
+    <p>
+      スワイプできるカードがありません。
+    </p>
+    <p>
+      時間を置いてから再度お試しください。
+    </p>
+    <img
+      src="test-file-stub"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ReloadUserCards Component render reloading message when pageStatus is initial state. 1`] = `
+<DocumentFragment>
+  <div
+    class="reload-user__container"
+  >
+    <p>
+      取得中...
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`ReloadUserCards render as before. 1`] = `
 <DocumentFragment>
   <div

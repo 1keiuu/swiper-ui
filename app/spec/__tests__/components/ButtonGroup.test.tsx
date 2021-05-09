@@ -11,7 +11,7 @@ describe("constant", () => {
   });
 });
 
-describe("ButtonGroup", () => {
+describe("ButtonGroup Component", () => {
   // HACK: ここモックデータにすべきか、constantからimportした物にすべきか
   const BUTTON_TYPE_OPTIONS: ButtonTypeOption[] = ["nope", "profile", "like"];
   afterEach(() => {
