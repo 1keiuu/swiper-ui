@@ -3,8 +3,6 @@
 ## 本番環境
 https://swiper-ui.vercel.app
 
-## ローカルのセットアップ
-
 ## 実装した機能
 - [x] 下部のボタンでlike/nope/ユーザーのプロフィール確認ができる。
 - [x] like/nopeのアニメーション。カードが反転するアニメーション。
@@ -38,6 +36,14 @@ https://swiper-ui.vercel.app
 
 **Infra**  
 - Docker  
+
+## ローカルのセットアップ
+docker-compose環境が必要です
+```
+docker-compose build
+docker-compose run app npm install
+docker-compose up
+```
 
 ## その他メモ
 - APIのレスポンスタイム
