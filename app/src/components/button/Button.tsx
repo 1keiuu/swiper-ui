@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./Button.scss";
-import { useCurrentUserCardDispatchContext } from "../../context/CurrentUserCardContext";
+import { useCurrentUserCardDispatch } from "../../context/CurrentUserCardContext";
 import { BUTTON_TYPES, STATUS_BUTTON_TYPES } from "../../constants/BUTTON";
 import likeImg from "../../../assets/heart.png";
 import nopeImg from "../../../assets/close.png";
@@ -12,7 +12,7 @@ type ButtonProps = {
 };
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const currentUserCardDispatcher = useCurrentUserCardDispatchContext();
+  const currentUserCardDispatcher = useCurrentUserCardDispatch();
   const handleClick = (buttonType: ButtonTypeOption) => {
     if (STATUS_BUTTON_TYPES.includes(buttonType)) {
       currentUserCardDispatcher.incrementIndex();

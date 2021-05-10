@@ -35,7 +35,7 @@ describe("ReloadUserCards Component", () => {
       paginationIndex: 0,
       pageStatus: "empty",
     }));
-    // NOTE: userCardsStateSpyを使い、contextの値を変えて再描画
+    // NOTE: userCardsStateSpyを使い、stateの値を変えてから再描画
     rerender(<ReloadUserCards />);
     expect(asFragment().firstChild.childNodes.length).toBe(3);
     expect(asFragment()).toMatchSnapshot();

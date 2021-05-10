@@ -38,10 +38,10 @@ const CurrentUserCardDispatchContext = createContext<CurrentUserCardDispatch>({
   toggleIsFlipped: () => {},
 });
 
-export const useCurrentUserCardStateContext = () =>
+export const useCurrentUserCardState = () =>
   useContext(CurrentUserCardStateContext);
 
-export const useCurrentUserCardDispatchContext = () =>
+export const useCurrentUserCardDispatch = () =>
   useContext(CurrentUserCardDispatchContext);
 
 const reducer = (
