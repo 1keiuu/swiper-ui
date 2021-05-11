@@ -59,6 +59,7 @@
     "react-responsive": "^8.2.0",
     "style-loader": "^2.0.0",
     "ts-loader": "^9.1.1",
-    "ts-node": "^9.1.1"
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
   }
 }
