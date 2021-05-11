@@ -49,9 +49,10 @@ export const useUserCardsDispatch = (): UserCardsDispactch =>
 
 const reducer = (state: UserCardsState, action: UserCardsAction) => {
   const { payload } = action;
-  const sum = state.userCards.concat(payload.cards);
   switch (action.type) {
     case "APPEND_CARDS":
+      // eslint-disable-next-line no-case-declarations
+      const sum = state.userCards.concat(payload.cards);
       return { ...state, userCards: sum };
     case "RESET_CARDS":
       return { ...state, userCards: [] };

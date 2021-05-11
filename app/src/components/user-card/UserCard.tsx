@@ -17,7 +17,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   const currentUserCardState = useCurrentUserCardState();
   const currentUserCardDispatcher = useCurrentUserCardDispatch();
 
-  let activeClassText = "";
+  let classText = "user-card";
 
   // NOTE: スワイプ判定用
   let moveX: number;
@@ -25,27 +25,23 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   // NOTE: 最低スワイプ量
   const dist = 70;
 
-  const userCardClass = (text: string): string[] => {
+  const userCardClass = (): string => {
     // NOTE: カードの状態(current / next / prev /like / nope)の判定をしてclassを適用する
     const isCurrent = currentCardIndex === index;
     const isPrev = currentCardIndex - 1 === index;
-
-    let classText = text;
-
-    classText += "user-card";
-    if (isCurrent) activeClassText = `${classText} --current`;
+    if (isCurrent) classText = `${classText} --current`;
     else if (currentCardIndex + 1 === index) {
-      activeClassText = `${classText} --next`;
+      classText = `${classText} --next`;
     } else if (isPrev) {
-      activeClassText = `${classText} --prev`;
+      classText = `${classText} --prev`;
       if (currentUserCardState.status === "like") {
-        activeClassText = `${classText} --like`;
+        classText = `${classText} --like`;
       }
       if (currentUserCardState.status === "nope") {
-        activeClassText = `${classText} --nope`;
+        classText = `${classText} --nope`;
       }
     }
-    return classText.split(" ");
+    return classText;
   };
 
   const userCardInnerClass = () => {
@@ -59,7 +55,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
       role="button"
       tabIndex={0}
       key={user.id}
-      className={userCardClass(activeClassText).join(" ")}
+      className={userCardClass()}
       onClick={() => {
         currentUserCardDispatcher.toggleIsFlipped();
       }}
