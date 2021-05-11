@@ -1,10 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { render } from "react-dom";
 import "./index.scss";
 import UserCardsList from "./components/user-cards-list/UserCardsList";
 import ButtonGroup from "./components/button-group/ButtonGroup";
 import { CurrentUserCardProvider } from "./context/CurrentUserCardContext";
-import { UserCardsProvider, useUserCardsState } from "./context/UserCardsContext";
+import {
+  UserCardsProvider,
+  useUserCardsState,
+} from "./context/UserCardsContext";
 
 const App = () => {
   const userCardsState = useUserCardsState();
@@ -12,7 +15,7 @@ const App = () => {
     <div className="container">
       <div className="inner">
         <UserCardsList userLists={userCardsState.userCards} />
-        <ButtonGroup isEmpty={userCardsState.pageStatus == "empty"} />
+        <ButtonGroup isEmpty={userCardsState.pageStatus === "empty"} />
       </div>
     </div>
   );
@@ -24,5 +27,5 @@ render(
       <App />
     </UserCardsProvider>
   </CurrentUserCardProvider>,
-  document.getElementById("app"),
+  document.getElementById("app")
 );

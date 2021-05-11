@@ -28,20 +28,30 @@ const initialState: UserCardsState = {
 const UserCardsStateContext = createContext<UserCardsState>(initialState);
 
 const UserCardsDispatchContext = createContext<UserCardsDispactch>({
-  appendCards: () => {},
-  resetCards: () => {},
-  incrementPaginationIndex: () => {},
-  setPageStatus: () => {},
+  appendCards: () => {
+    // do nothing.
+  },
+  resetCards: () => {
+    // do nothing.
+  },
+  incrementPaginationIndex: () => {
+    // do nothing.
+  },
+  setPageStatus: () => {
+    // do nothing.
+  },
 });
 
-export const useUserCardsState = (): UserCardsState => useContext(UserCardsStateContext);
-export const useUserCardsDispatch = (): UserCardsDispactch => useContext(UserCardsDispatchContext);
+export const useUserCardsState = (): UserCardsState =>
+  useContext(UserCardsStateContext);
+export const useUserCardsDispatch = (): UserCardsDispactch =>
+  useContext(UserCardsDispatchContext);
 
 const reducer = (state: UserCardsState, action: UserCardsAction) => {
   const { payload } = action;
+  const sum = state.userCards.concat(payload.cards);
   switch (action.type) {
     case "APPEND_CARDS":
-      const sum = state.userCards.concat(payload.cards);
       return { ...state, userCards: sum };
     case "RESET_CARDS":
       return { ...state, userCards: [] };
@@ -54,7 +64,11 @@ const reducer = (state: UserCardsState, action: UserCardsAction) => {
   }
 };
 
-export const UserCardsProvider = ({ children }) => {
+export const UserCardsProvider = ({
+  children,
+}: {
+  children: JSX.Element;
+}): JSX.Element => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const appendCards = (cards: UserCard[]) => {
     dispatch({

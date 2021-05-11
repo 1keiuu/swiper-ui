@@ -27,24 +27,35 @@ const initialState: CurrentUserCardState = {
   isFlipped: false,
 };
 
-const CurrentUserCardStateContext = createContext<CurrentUserCardState>(
-  initialState,
-);
+const CurrentUserCardStateContext =
+  createContext<CurrentUserCardState>(initialState);
 const CurrentUserCardDispatchContext = createContext<CurrentUserCardDispatch>({
-  incrementIndex: () => {},
-  decrementIndex: () => {},
-  changeStatus: () => {},
-  setIsFlipped: () => {},
-  toggleIsFlipped: () => {},
+  incrementIndex: () => {
+    // do nothing.
+  },
+  decrementIndex: () => {
+    // do nothing.
+  },
+  changeStatus: () => {
+    // do nothing.
+  },
+  setIsFlipped: () => {
+    // do nothing.
+  },
+  toggleIsFlipped: () => {
+    // do nothing.
+  },
 });
 
-export const useCurrentUserCardState = () => useContext(CurrentUserCardStateContext);
+export const useCurrentUserCardState = (): CurrentUserCardState =>
+  useContext(CurrentUserCardStateContext);
 
-export const useCurrentUserCardDispatch = () => useContext(CurrentUserCardDispatchContext);
+export const useCurrentUserCardDispatch = (): CurrentUserCardDispatch =>
+  useContext(CurrentUserCardDispatchContext);
 
 const reducer = (
   state: CurrentUserCardState,
-  action: CurrentUserCardAction,
+  action: CurrentUserCardAction
 ) => {
   const { payload } = action;
   switch (action.type) {
@@ -63,7 +74,11 @@ const reducer = (
   }
 };
 
-export const CurrentUserCardProvider = ({ children }) => {
+export const CurrentUserCardProvider = ({
+  children,
+}: {
+  children: JSX.Element;
+}): JSX.Element => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const incrementIndex = () => {
     dispatch({ type: "INCREMENT_INDEX" });

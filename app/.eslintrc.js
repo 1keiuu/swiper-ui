@@ -1,3 +1,6 @@
+const path = require("path");
+const environment = process.env.NODE_ENV || "development";
+
 module.exports = {
   env: {
     browser: true,
@@ -48,13 +51,13 @@ module.exports = {
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "react/prop-types": "off",
+    "operator-linebreak": 0,
+    "implicit-arrow-linebreak": 0,
+    "comma-dangle": 0,
+    "import/prefer-default-export": 0,
+    "import/no-unresolved": "off",
   },
   settings: {
-    "import/resolver": {
-      node: {
-        paths: ["src"],
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
-      },
-    },
+    "import/resolver": "webpack",
   },
 };

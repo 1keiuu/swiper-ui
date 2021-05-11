@@ -5,7 +5,7 @@ import {
   useUserCardsDispatch,
 } from "../../../src/context/UserCardsContext";
 import emptyImg from "../../../assets/empty.jpg";
-import { PAGE_STATUS } from "../../../src/constants/PAGE";
+import PAGE_STATUS from "../../../src/constants/PAGE";
 
 const ReloadUserCards: React.FC = () => {
   const userCardsState = useUserCardsState();

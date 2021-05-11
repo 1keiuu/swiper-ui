@@ -12,9 +12,7 @@ type UserCardProps = {
 };
 
 const UserCard: React.FC<UserCardProps> = (props) => {
-  const { user } = props;
-  const { currentCardIndex } = props;
-  const { index } = props;
+  const { user, currentCardIndex, index } = props;
 
   const currentUserCardState = useCurrentUserCardState();
   const currentUserCardDispatcher = useCurrentUserCardDispatch();
