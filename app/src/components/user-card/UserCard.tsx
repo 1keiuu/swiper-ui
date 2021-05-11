@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import "./UserCard.scss";
 import {
   useCurrentUserCardState,
@@ -37,8 +37,10 @@ const UserCard: React.FC<UserCardProps> = (props) => {
     else if (currentCardIndex + 1 == index) activeClassText = text += "--next ";
     else if (isPrev) {
       activeClassText = text += "--prev ";
-      if (currentUserCardState.status == "like") activeClassText = text += "--like ";
-      if (currentUserCardState.status == "nope") activeClassText = text += "--nope ";
+      if (currentUserCardState.status == "like")
+        activeClassText = text += "--like ";
+      if (currentUserCardState.status == "nope")
+        activeClassText = text += "--nope ";
     }
     return text.split(" ");
   };
@@ -96,10 +98,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
             className="user-card__img"
           />
           <div className="user-card__info">
-            <p className="name-text">
-              {user.name}
-              ,
-            </p>
+            <p className="name-text">{user.name},</p>
             <p className="age-text">{user.age}</p>
           </div>
         </div>

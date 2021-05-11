@@ -1,6 +1,5 @@
 import React from "react";
 import "./Button.scss";
-import PropTypes from "prop-types";
 import { useCurrentUserCardDispatch } from "../../context/CurrentUserCardContext";
 import { BUTTON_TYPES, STATUS_BUTTON_TYPES } from "../../constants/BUTTON";
 import likeImg from "../../../assets/heart.png";
@@ -67,18 +66,6 @@ const Button: React.FC<ButtonProps> = (props) => {
     default:
       return <></>;
   }
-};
-
-// HACK: UNION型をprop-typesで使う方法。ユーザー定義型(この場合はButtonTypeOption)でvalidationはできない？
-// 参考https://stackoverflow.com/questions/62562974/how-to-use-typescript-union-type-in-react-proptypes
-Button.propTypes = {
-  buttonType: PropTypes.oneOf(["nope", "profile", "like", ""] as const),
-  isEmpty: PropTypes.bool,
-};
-
-Button.defaultProps = {
-  buttonType: "",
-  isEmpty: false,
 };
 
 export default Button;

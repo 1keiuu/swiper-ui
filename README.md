@@ -16,7 +16,7 @@ https://swiper-ui.vercel.app
 - インフラまで含めた最小限のアプリケーション構成
 - useContextによる状態管理
 - webpack×babelでのフロントエンド環境構築
-- eslintでコードの規則/安全性の担保
+- eslint(@typescript-eslint/eslint-plugin)でコードの規則/安全性の担保
 
 ## 今後やりたい事
 - ユーザーログインとマッチング機能

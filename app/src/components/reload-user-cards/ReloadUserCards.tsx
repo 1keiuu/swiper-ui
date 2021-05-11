@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./ReloadUserCards.scss";
 import { getUsers } from "../../lib/fetch";
 import {
@@ -28,22 +28,26 @@ const ReloadUserCards: React.FC = () => {
       .catch((e) => {
         throw Error(e);
       });
+    // FIXME: Lintエラー解消。提示された解決策だと無限ループが起きそう。調べても解決策出て来ず。
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  if (userCardsState.pageStatus == PAGE_STATUS.RELOADING.name) {
-    return (
-      <div className="reload-user__container">
-        <p>取得中...</p>
-      </div>
-    );
-  }
-  if (userCardsState.pageStatus == PAGE_STATUS.EMPTY.name) {
-    return (
-      <div className="empty-user__container">
-        <p>スワイプできるカードがありません。</p>
-        <p>時間を置いてから再度お試しください。</p>
-        <img src={emptyImg} alt="empty image" />
-      </div>
-    );
+  switch (userCardsState.pageStatus) {
+    case PAGE_STATUS.RELOADING.name:
+      return (
+        <div className="reload-user__container">
+          <p>取得中...</p>
+        </div>
+      );
+    case PAGE_STATUS.EMPTY.name:
+      return (
+        <div className="empty-user__container">
+          <p>スワイプできるカードがありません。</p>
+          <p>時間を置いてから再度お試しください。</p>
+          <img src={emptyImg as string} alt="empty" />
+        </div>
+      );
+    default:
+      return <></>;
   }
 };
 
