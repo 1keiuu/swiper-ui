@@ -28,7 +28,7 @@ const initialState: CurrentUserCardState = {
 };
 
 const CurrentUserCardStateContext = createContext<CurrentUserCardState>(
-  initialState
+  initialState,
 );
 const CurrentUserCardDispatchContext = createContext<CurrentUserCardDispatch>({
   incrementIndex: () => {},
@@ -38,17 +38,15 @@ const CurrentUserCardDispatchContext = createContext<CurrentUserCardDispatch>({
   toggleIsFlipped: () => {},
 });
 
-export const useCurrentUserCardState = () =>
-  useContext(CurrentUserCardStateContext);
+export const useCurrentUserCardState = () => useContext(CurrentUserCardStateContext);
 
-export const useCurrentUserCardDispatch = () =>
-  useContext(CurrentUserCardDispatchContext);
+export const useCurrentUserCardDispatch = () => useContext(CurrentUserCardDispatchContext);
 
 const reducer = (
   state: CurrentUserCardState,
-  action: CurrentUserCardAction
+  action: CurrentUserCardAction,
 ) => {
-  const payload = action.payload;
+  const { payload } = action;
   switch (action.type) {
     case "INCREMENT_INDEX":
       return { ...state, index: state.index + 1 };
@@ -74,10 +72,10 @@ export const CurrentUserCardProvider = ({ children }) => {
     dispatch({ type: "DECREMENT_INDEX" });
   };
   const changeStatus = (status: CardStatus) => {
-    dispatch({ type: "CHANGE_STATUS", payload: { status: status } });
+    dispatch({ type: "CHANGE_STATUS", payload: { status } });
   };
   const setIsFlipped = (isFlipped: boolean) => {
-    dispatch({ type: "SET_IS_FLIPPED", payload: { isFlipped: isFlipped } });
+    dispatch({ type: "SET_IS_FLIPPED", payload: { isFlipped } });
   };
   const toggleIsFlipped = () => {
     dispatch({ type: "TOGGLE_IS_FLIPPED" });

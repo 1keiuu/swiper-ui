@@ -29,13 +29,14 @@ const ReloadUserCards: React.FC = () => {
         throw Error(e);
       });
   }, []);
-  if (userCardsState.pageStatus == PAGE_STATUS.RELOADING.name)
+  if (userCardsState.pageStatus == PAGE_STATUS.RELOADING.name) {
     return (
       <div className="reload-user__container">
         <p>取得中...</p>
       </div>
     );
-  else if (userCardsState.pageStatus == PAGE_STATUS.EMPTY.name)
+  }
+  if (userCardsState.pageStatus == PAGE_STATUS.EMPTY.name) {
     return (
       <div className="empty-user__container">
         <p>スワイプできるカードがありません。</p>
@@ -43,6 +44,7 @@ const ReloadUserCards: React.FC = () => {
         <img src={emptyImg} alt="empty image" />
       </div>
     );
+  }
 };
 
 export default ReloadUserCards;

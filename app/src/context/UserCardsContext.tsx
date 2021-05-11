@@ -34,13 +34,11 @@ const UserCardsDispatchContext = createContext<UserCardsDispactch>({
   setPageStatus: () => {},
 });
 
-export const useUserCardsState = (): UserCardsState =>
-  useContext(UserCardsStateContext);
-export const useUserCardsDispatch = (): UserCardsDispactch =>
-  useContext(UserCardsDispatchContext);
+export const useUserCardsState = (): UserCardsState => useContext(UserCardsStateContext);
+export const useUserCardsDispatch = (): UserCardsDispactch => useContext(UserCardsDispatchContext);
 
 const reducer = (state: UserCardsState, action: UserCardsAction) => {
-  const payload = action.payload;
+  const { payload } = action;
   switch (action.type) {
     case "APPEND_CARDS":
       const sum = state.userCards.concat(payload.cards);
@@ -61,7 +59,7 @@ export const UserCardsProvider = ({ children }) => {
   const appendCards = (cards: UserCard[]) => {
     dispatch({
       type: "APPEND_CARDS",
-      payload: { cards: cards },
+      payload: { cards },
     });
   };
   const resetCards = () => {
@@ -71,7 +69,7 @@ export const UserCardsProvider = ({ children }) => {
     dispatch({ type: "INCREMENT_PAGINATION_INDEX" });
   };
   const setPageStatus = (pageStatus: PageStatus) => {
-    dispatch({ type: "SET_PAGE_STATUS", payload: { pageStatus: pageStatus } });
+    dispatch({ type: "SET_PAGE_STATUS", payload: { pageStatus } });
   };
 
   return (

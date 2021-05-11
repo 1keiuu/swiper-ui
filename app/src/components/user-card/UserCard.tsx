@@ -12,14 +12,14 @@ type UserCardProps = {
 };
 
 const UserCard: React.FC<UserCardProps> = (props) => {
-  const user = props.user;
-  const currentCardIndex = props.currentCardIndex;
-  const index = props.index;
+  const { user } = props;
+  const { currentCardIndex } = props;
+  const { index } = props;
 
   const currentUserCardState = useCurrentUserCardState();
   const currentUserCardDispatcher = useCurrentUserCardDispatch();
 
-  let activeClassText: string = "";
+  let activeClassText = "";
 
   // NOTE: スワイプ判定用
   let moveX;
@@ -37,10 +37,8 @@ const UserCard: React.FC<UserCardProps> = (props) => {
     else if (currentCardIndex + 1 == index) activeClassText = text += "--next ";
     else if (isPrev) {
       activeClassText = text += "--prev ";
-      if (currentUserCardState.status == "like")
-        activeClassText = text += "--like ";
-      if (currentUserCardState.status == "nope")
-        activeClassText = text += "--nope ";
+      if (currentUserCardState.status == "like") activeClassText = text += "--like ";
+      if (currentUserCardState.status == "nope") activeClassText = text += "--nope ";
     }
     return text.split(" ");
   };
@@ -48,7 +46,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   const userCardInnerClass = () => {
     // NOTE: flipしている状態かどうか
     if (currentUserCardState.isFlipped) return "--flipped";
-    else return "";
+    return "";
   };
 
   return (
@@ -98,7 +96,10 @@ const UserCard: React.FC<UserCardProps> = (props) => {
             className="user-card__img"
           />
           <div className="user-card__info">
-            <p className="name-text">{user.name},</p>
+            <p className="name-text">
+              {user.name}
+              ,
+            </p>
             <p className="age-text">{user.age}</p>
           </div>
         </div>

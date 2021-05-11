@@ -4,8 +4,8 @@ import "./index.scss";
 import UserCardsList from "./components/user-cards-list/UserCardsList";
 import ButtonGroup from "./components/button-group/ButtonGroup";
 import { CurrentUserCardProvider } from "./context/CurrentUserCardContext";
-import { UserCardsProvider } from "./context/UserCardsContext";
-import { useUserCardsState } from "./context/UserCardsContext";
+import { UserCardsProvider, useUserCardsState } from "./context/UserCardsContext";
+
 const App = () => {
   const userCardsState = useUserCardsState();
   return (
@@ -24,5 +24,5 @@ render(
       <App />
     </UserCardsProvider>
   </CurrentUserCardProvider>,
-  document.getElementById("app")
+  document.getElementById("app"),
 );

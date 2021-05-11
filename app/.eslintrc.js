@@ -22,6 +22,7 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint"],
   rules: {
+    quotes: ["error", "double"],
     "import/extensions": [
       "error",
       {
