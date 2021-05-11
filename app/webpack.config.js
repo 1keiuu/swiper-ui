@@ -63,7 +63,7 @@ module.exports = {
   devServer: {
     open: true,
     hot: true,
-    contentBase: path.join(__dirname, "./"),
+    contentBase: path.join(__dirname, "./assets"),
     watchContentBase: true,
     port: 3000,
     host: "0.0.0.0",

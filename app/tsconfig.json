@@ -6,6 +6,11 @@
       "jsx": "react-jsx",      
       "moduleResolution": "node",
       "lib": [ "es2020", "dom" ],
-      "allowSyntheticDefaultImports":true
-    }
+      "allowSyntheticDefaultImports":true,
+      "typeRoots": [
+        "node_modules/@types",
+        "types"
+      ],
+    },
+    "include": ["src","spec","@types"]
   }

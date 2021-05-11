@@ -3,4 +3,4 @@ declare type ButtonGroup = {
   PROFILE: { name: ButtonTypeOption };
   LIKE: { name: ButtonTypeOption };
 };
-declare type ButtonTypeOption = "nope" | "profile" | "like";
+declare type ButtonTypeOption = "nope" | "profile" | "like" | "";
