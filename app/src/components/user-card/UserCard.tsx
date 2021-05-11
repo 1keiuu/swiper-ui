@@ -22,27 +22,32 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   let activeClassText = "";
 
   // NOTE: スワイプ判定用
-  let moveX;
-  let startX;
+  let moveX: number;
+  let startX: number;
   // NOTE: 最低スワイプ量
   const dist = 70;
 
   const userCardClass = (text: string): string[] => {
     // NOTE: カードの状態(current / next / prev /like / nope)の判定をしてclassを適用する
-    const isCurrent = currentCardIndex == index;
-    const isPrev = currentCardIndex - 1 == index;
+    const isCurrent = currentCardIndex === index;
+    const isPrev = currentCardIndex - 1 === index;
 
-    text += "user-card ";
-    if (isCurrent) activeClassText = text += "--current ";
-    else if (currentCardIndex + 1 == index) activeClassText = text += "--next ";
-    else if (isPrev) {
-      activeClassText = text += "--prev ";
-      if (currentUserCardState.status == "like")
-        activeClassText = text += "--like ";
-      if (currentUserCardState.status == "nope")
-        activeClassText = text += "--nope ";
+    let classText = text;
+
+    classText += "user-card";
+    if (isCurrent) activeClassText = `${classText} --current`;
+    else if (currentCardIndex + 1 === index) {
+      activeClassText = `${classText} --next`;
+    } else if (isPrev) {
+      activeClassText = `${classText} --prev`;
+      if (currentUserCardState.status === "like") {
+        activeClassText = `${classText} --like`;
+      }
+      if (currentUserCardState.status === "nope") {
+        activeClassText = `${classText} --nope`;
+      }
     }
-    return text.split(" ");
+    return classText.split(" ");
   };
 
   const userCardInnerClass = () => {
@@ -53,9 +58,14 @@ const UserCard: React.FC<UserCardProps> = (props) => {
 
   return (
     <div
+      role="button"
+      tabIndex={0}
       key={user.id}
       className={userCardClass(activeClassText).join(" ")}
       onClick={() => {
+        currentUserCardDispatcher.toggleIsFlipped();
+      }}
+      onKeyDown={() => {
         currentUserCardDispatcher.toggleIsFlipped();
       }}
       onTouchStart={(e) => {
@@ -64,7 +74,7 @@ const UserCard: React.FC<UserCardProps> = (props) => {
       onTouchMove={(e) => {
         moveX = e.changedTouches[0].pageX;
       }}
-      onTouchEnd={(e) => {
+      onTouchEnd={() => {
         const isLeftSwipe = startX > moveX && startX > moveX + dist;
         const isRightSwipe = startX < moveX && startX + dist < moveX;
 
@@ -78,8 +88,6 @@ const UserCard: React.FC<UserCardProps> = (props) => {
           currentUserCardDispatcher.changeStatus("like");
           currentUserCardDispatcher.setIsFlipped(false);
         }
-        moveX;
-        startX;
       }}
     >
       <div className={["user-card__inner", userCardInnerClass()].join(" ")}>
@@ -94,11 +102,14 @@ const UserCard: React.FC<UserCardProps> = (props) => {
             src={user.imgURL}
             width={330}
             height={330}
-            alt="user image"
+            alt="user"
             className="user-card__img"
           />
           <div className="user-card__info">
-            <p className="name-text">{user.name},</p>
+            <p className="name-text">
+              {user.name}
+              <span>,</span>
+            </p>
             <p className="age-text">{user.age}</p>
           </div>
         </div>
